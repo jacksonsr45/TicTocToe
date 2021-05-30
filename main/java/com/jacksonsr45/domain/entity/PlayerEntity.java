@@ -1,10 +1,16 @@
 package com.jacksonsr45.domain.entity;
 
+import com.jacksonsr45.domain.request.PlayerManagerRequest;
 import com.jacksonsr45.domain.request.TicTocToeRequest;
 
 public class PlayerEntity {
     private String id;
     private String name;
+
+    public PlayerEntity(PlayerManagerRequest request) {
+        setId(request.getPlayer().getId());
+        this.setName(request.getPlayer().getName());
+    }
 
     public PlayerEntity(TicTocToeRequest request) {
         this.setId(request.getPlayer().getId());
