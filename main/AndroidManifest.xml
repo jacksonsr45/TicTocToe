@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
           package="com.jacksonsr45.tictoctoe.userinterface.activit">
+=======
+          package="com.jacksonsr45.userinterface.tictoctoe">
+>>>>>>> Initial Commit
 
     <application
             android:allowBackup="true"
@@ -9,7 +13,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.TicTocToe">
+<<<<<<< HEAD
         <activity android:name="com.jacksonsr45.tictoctoe.userinterface.activit.MainActivity">
+=======
+        <activity android:name=".MainActivity">
+>>>>>>> Initial Commit
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

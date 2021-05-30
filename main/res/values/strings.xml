@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">TicTocToe</string>
+<<<<<<< HEAD
     <string name="action_ok">OK</string>
     <string name="dialog_title_error">Error</string>
+=======
+>>>>>>> Initial Commit
 </resources>
