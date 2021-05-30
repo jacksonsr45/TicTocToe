@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">TicTocToe</string>
-    <string name="action_ok">OK</string>
-    <string name="dialog_title_error">Error</string>
 </resources>
