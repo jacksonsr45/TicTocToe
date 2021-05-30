@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">TicTocToe</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="action_ok">OK</string>
     <string name="dialog_title_error">Error</string>
 =======
 >>>>>>> Initial Commit
+=======
+>>>>>>> Add Domain directory and files in domain TicTocToe with all tests
 </resources>

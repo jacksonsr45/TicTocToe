@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 <<<<<<< HEAD
+<<<<<<< HEAD
           package="com.jacksonsr45.tictoctoe.userinterface.activit">
 =======
           package="com.jacksonsr45.userinterface.tictoctoe">
 >>>>>>> Initial Commit
+=======
+          package="com.jacksonsr45.userinterface.tictoctoe">
+>>>>>>> Add Domain directory and files in domain TicTocToe with all tests
 
     <application
             android:allowBackup="true"
@@ -14,10 +18,14 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.TicTocToe">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name="com.jacksonsr45.tictoctoe.userinterface.activit.MainActivity">
 =======
         <activity android:name=".MainActivity">
 >>>>>>> Initial Commit
+=======
+        <activity android:name=".MainActivity">
+>>>>>>> Add Domain directory and files in domain TicTocToe with all tests
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
