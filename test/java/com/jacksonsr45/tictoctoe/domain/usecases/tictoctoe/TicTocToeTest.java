@@ -62,13 +62,28 @@ public class TicTocToeTest {
     }
 
     @Test
+    public void shouldBeCheckResultReturnValueTrueAndSetValueInTableGetResult() {
+        int player = 1;
+        Table table = new Table();
+        table.setField(1,0,player);
+        table.setField(1,1,player);
+        table.setField(1,2,player);
+
+        boolean value = this.ticTocToe.checkResult(table);
+
+        assertEquals(true, value);
+        assertEquals(1, table.getResult());
+    }
+
+    @Test
     public void shouldBeSetPlayerHistoryReturnValueCorrect() {
         Table table = new Table();
         table.setField(0,0,1);
         table.setField(1,1,1);
         table.setField(2,2,1);
-        PlayerHistoryRequest request = new PlayerHistoryRequest(table, playerHistoryId, playerId, 0,0,0,0);
 
+        this.ticTocToe.checkResult(table);
+        PlayerHistoryRequest request = new PlayerHistoryRequest(table, playerHistoryId, playerId, 0,0,0,0);
         this.ticTocToe.setPlayerHistory(request, this.presenter);
 
         assertEquals(playerHistoryId, this.presenter.getPlayerHistory().id);

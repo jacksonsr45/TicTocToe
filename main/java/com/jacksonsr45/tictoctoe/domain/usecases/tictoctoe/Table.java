@@ -35,9 +35,9 @@ public class Table {
     }
 
     public boolean checkColumn(int value, int player) {
-        for(int coluna=0 ; coluna<3 ; coluna++){
-            if( (this.getField()[0][coluna] + this.getField()[1][coluna]
-                    + this.getField()[2][coluna]) == value) {
+        for(int column=0 ; column<3 ; column++){
+            if( (this.getField()[0][column] + this.getField()[1][column]
+                    + this.getField()[2][column]) == value) {
                 this.setResult(player);
                 return true;
             }

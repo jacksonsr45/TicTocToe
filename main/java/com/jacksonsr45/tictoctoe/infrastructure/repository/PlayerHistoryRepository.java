@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.PlayerHistoryInterface;
+import com.jacksonsr45.tictoctoe.domain.response.playerhistory.MatchResponse;
+import com.jacksonsr45.tictoctoe.domain.response.playerhistory.MovementsResponse;
 import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
 import com.jacksonsr45.tictoctoe.infrastructure.factory.DBFactory;
 
@@ -33,26 +35,12 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     }
 
     @Override
-    public PlayerHistoryResponse updatePlayerHistory(PlayerHistoryEntity playerHistory) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("player_id", playerHistory.playerId);
-        contentValues.put("total", playerHistory.total);
-        contentValues.put("victories", playerHistory.victories);
-        contentValues.put("defeats", playerHistory.defeats);
-        contentValues.put("ties", playerHistory.ties);
-        String[] parameter = new String[1];
-        parameter[0] = playerHistory.id;
-        this.connection.update("player_history", contentValues, "id = ?", parameter);
-        return new PlayerHistoryResponse(playerHistory);
-    }
-
-    @Override
-    public PlayerHistoryResponse showPlayerHistory(String id) {
+    public PlayerHistoryResponse showPlayerHistory(String playerId) {
         Cursor result = null;
         StringBuilder query = new StringBuilder();
-        query.append("SELECT * FROM player_history WHERE id = ?");
+        query.append("SELECT * FROM player_history WHERE player_id = ?");
         String[] parameter = new String[1];
-        parameter[0] = id;
+        parameter[0] = playerId;
         result = this.connection.rawQuery(query.toString(), parameter);
         result.moveToFirst();
         if (result.getCount() > 0) return new PlayerHistoryResponse(result);
@@ -60,18 +48,17 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     }
 
     @Override
-    public ArrayList<PlayerHistoryResponse> listPlayerHistories() {
-        ArrayList<PlayerHistoryResponse> players = new ArrayList<PlayerHistoryResponse>();
-        if (players == null) return null;
-        StringBuilder query = new StringBuilder();
-        query.append("SELECT * FROM player_history");
-        Cursor result = this.connection.rawQuery(query.toString(), null);
-        if (result.getCount() > 0) {
-            result.moveToFirst();
-            do {
-                players.add(new PlayerHistoryResponse(result));
-            } while (result.moveToNext());
-        }
-        return players;
+    public ArrayList<MatchResponse> listMatch() {
+        return null;
+    }
+
+    @Override
+    public MatchResponse showMatch(String id) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<MovementsResponse> listMovements() {
+        return null;
     }
 }
