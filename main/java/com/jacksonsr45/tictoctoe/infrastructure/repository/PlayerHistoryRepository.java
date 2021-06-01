@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerHistoryEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.PlayerHistoryInterface;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerHistoryResponse;
+import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
 import com.jacksonsr45.tictoctoe.infrastructure.factory.DBFactory;
 
 import java.util.ArrayList;
@@ -22,12 +22,12 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     @Override
     public PlayerHistoryResponse createPlayerHistory(PlayerHistoryEntity playerHistory) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("id", playerHistory.getPlayerId());
-        contentValues.put("player_id", playerHistory.getPlayerId());
-        contentValues.put("total", playerHistory.getTotal());
-        contentValues.put("victories", playerHistory.getVictories());
-        contentValues.put("defeats", playerHistory.getDefeats());
-        contentValues.put("ties", playerHistory.getTies());
+        contentValues.put("id", playerHistory.id);
+        contentValues.put("player_id", playerHistory.playerId);
+        contentValues.put("total", playerHistory.total);
+        contentValues.put("victories", playerHistory.victories);
+        contentValues.put("defeats", playerHistory.defeats);
+        contentValues.put("ties", playerHistory.ties);
         this.connection.insertOrThrow("player_history", null, contentValues);
         return new PlayerHistoryResponse(playerHistory);
     }
@@ -35,14 +35,13 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     @Override
     public PlayerHistoryResponse updatePlayerHistory(PlayerHistoryEntity playerHistory) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("id", playerHistory.getPlayerId());
-        contentValues.put("player_id", playerHistory.getPlayerId());
-        contentValues.put("total", playerHistory.getTotal());
-        contentValues.put("victories", playerHistory.getVictories());
-        contentValues.put("defeats", playerHistory.getDefeats());
-        contentValues.put("ties", playerHistory.getTies());
+        contentValues.put("player_id", playerHistory.playerId);
+        contentValues.put("total", playerHistory.total);
+        contentValues.put("victories", playerHistory.victories);
+        contentValues.put("defeats", playerHistory.defeats);
+        contentValues.put("ties", playerHistory.ties);
         String[] parameter = new String[1];
-        parameter[0] = playerHistory.getId();
+        parameter[0] = playerHistory.id;
         this.connection.update("player_history", contentValues, "id = ?", parameter);
         return new PlayerHistoryResponse(playerHistory);
     }

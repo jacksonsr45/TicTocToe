@@ -1,12 +1,18 @@
 package com.jacksonsr45.tictoctoe.domain.gateway;
 
-import com.jacksonsr45.tictoctoe.domain.entity.TicTocToeEntity;
-import com.jacksonsr45.tictoctoe.domain.response.TicTocToeResponse;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse;
 
 public interface TicTocToeInterface {
-    public TicTocToeResponse initGame(TicTocToeEntity entity);
+    public MatchResponse startMatch(MatchEntity entity);
 
-    public TicTocToeResponse computerMove(TicTocToeEntity entity);
+    public MovementsResponse computerMove(MovementEntity entity);
 
-    public TicTocToeResponse playerMove(TicTocToeEntity entity);
+    public MovementsResponse playerMove(MovementEntity entity);
+
+    public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity);
 }

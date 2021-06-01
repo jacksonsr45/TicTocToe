@@ -1,27 +1,27 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.playermanager.presenter;
 
 import com.jacksonsr45.tictoctoe.domain.presenter.PlayerManagerPresenterInterface;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerManagerResponse;
+import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 
 import java.util.ArrayList;
 
 public class PlayerManagerPresenter implements PlayerManagerPresenterInterface {
-    private PlayerManagerResponse playerViewModel;
-    private ArrayList<PlayerManagerResponse> playersViewModel;
+    private PlayerResponse playerViewModel;
+    private ArrayList<PlayerResponse> playersViewModel;
 
     @Override
-    public void present(PlayerManagerResponse response) {
+    public void present(PlayerResponse response) {
         this.playerViewModel = response;
     }
 
     @Override
-    public void present(ArrayList<PlayerManagerResponse> response) {
+    public void present(ArrayList<PlayerResponse> response) {
         this.playersViewModel = response;
     }
 
-    public PlayerManagerResponse getPlayerViewModel() {
+    public PlayerResponse getPlayerViewModel() {
         return this.playerViewModel;
     }
 
-    public ArrayList<PlayerManagerResponse> getPlayersViewModel() { return this.playersViewModel; }
+    public ArrayList<PlayerResponse> getPlayersViewModel() { return this.playersViewModel; }
 }

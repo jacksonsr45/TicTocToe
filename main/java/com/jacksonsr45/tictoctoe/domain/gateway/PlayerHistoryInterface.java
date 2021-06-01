@@ -1,7 +1,7 @@
 package com.jacksonsr45.tictoctoe.domain.gateway;
 
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerHistoryEntity;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerHistoryResponse;
+import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
+import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
 
 import java.util.ArrayList;
 

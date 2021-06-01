@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.playermanager.PlayerEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.PlayerManagerInterface;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerManagerResponse;
+import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 import com.jacksonsr45.tictoctoe.infrastructure.factory.DBFactory;
 
 import java.util.ArrayList;
@@ -20,28 +20,27 @@ public class PlayerManagerRepository implements PlayerManagerInterface {
     }
 
     @Override
-    public PlayerManagerResponse addPlayer(PlayerEntity player) {
+    public PlayerResponse addPlayer(PlayerEntity player) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("id", player.getId());
-        contentValues.put("name", player.getName());
+        contentValues.put("id", player.id);
+        contentValues.put("name", player.name);
         this.connection.insertOrThrow("player", null, contentValues);
-        return new PlayerManagerResponse(player);
+        return new PlayerResponse(player);
     }
 
     @Override
-    public PlayerManagerResponse updatedPlayer(PlayerEntity player) {
+    public PlayerResponse updatedPlayer(PlayerEntity player) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("id", player.getId());
-        contentValues.put("name", player.getName());
+        contentValues.put("name", player.name);
         String[] parameter = new String[1];
-        parameter[0] = player.getId();
+        parameter[0] = player.id;
         this.connection.update("player", contentValues, "id = ?", parameter);
-        return new PlayerManagerResponse(player);
+        return new PlayerResponse(player);
     }
 
     @Override
-    public PlayerManagerResponse deletePlayer(String id) {
-        PlayerManagerResponse player = this.showPlayer(id);
+    public PlayerResponse deletePlayer(String id) {
+        PlayerResponse player = this.showPlayer(id);
         String[] parameter = new String[1];
         parameter[0] = id;
         this.connection.delete("player", "id = ?", parameter);
@@ -49,8 +48,8 @@ public class PlayerManagerRepository implements PlayerManagerInterface {
     }
 
     @Override
-    public ArrayList<PlayerManagerResponse> listPlayers() {
-        ArrayList<PlayerManagerResponse> players = new ArrayList<PlayerManagerResponse>();
+    public ArrayList<PlayerResponse> listPlayers() {
+        ArrayList<PlayerResponse> players = new ArrayList<PlayerResponse>();
         if (players == null) return null;
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM player");
@@ -58,14 +57,14 @@ public class PlayerManagerRepository implements PlayerManagerInterface {
         if (result.getCount() > 0) {
             result.moveToFirst();
             do {
-                players.add(new PlayerManagerResponse(result));
+                players.add(new PlayerResponse(result));
             }while (result.moveToNext());
         }
         return players;
     }
 
     @Override
-    public PlayerManagerResponse showPlayer(String id) {
+    public PlayerResponse showPlayer(String id) {
         Cursor result = null;
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM player WHERE id = ?");
@@ -73,7 +72,7 @@ public class PlayerManagerRepository implements PlayerManagerInterface {
         parameter[0] = id;
         result = this.connection.rawQuery(query.toString(), parameter);
         result.moveToFirst();
-        if (result.getCount() > 0) return new PlayerManagerResponse(result);
+        if (result.getCount() > 0) return new PlayerResponse(result);
         return null;
     }
 }
