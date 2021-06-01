@@ -32,4 +32,10 @@ public class TicTocToe {
     public void setPlayerHistory(PlayerHistoryRequest request, TicTocToePresenterInterface presenter) {
         presenter.present(this.ticTocToe.setPlayerHistory(new PlayerHistoryEntity(request)));
     }
+
+    public boolean checkResult(Table table) {
+        if (table.checkResult(3, 1)) return true;
+        else if (table.checkResult(-3,1)) return true;
+        return false;
+    }
 }

@@ -6,22 +6,22 @@ import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 import java.util.ArrayList;
 
 public class PlayerManagerPresenter implements PlayerManagerPresenterInterface {
-    private PlayerResponse playerViewModel;
-    private ArrayList<PlayerResponse> playersViewModel;
+    private PlayerResponse player;
+    private ArrayList<PlayerResponse> players;
 
     @Override
     public void present(PlayerResponse response) {
-        this.playerViewModel = response;
+        this.player = response;
     }
 
     @Override
     public void present(ArrayList<PlayerResponse> response) {
-        this.playersViewModel = response;
+        this.players = response;
     }
 
-    public PlayerResponse getPlayerViewModel() {
-        return this.playerViewModel;
+    public PlayerResponse getPlayer() {
+        return this.player;
     }
 
-    public ArrayList<PlayerResponse> getPlayersViewModel() { return this.playersViewModel; }
+    public ArrayList<PlayerResponse> getPlayers() { return this.players; }
 }

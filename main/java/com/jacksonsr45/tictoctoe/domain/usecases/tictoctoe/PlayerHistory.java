@@ -16,8 +16,6 @@ public class PlayerHistory {
     }
 
     private void getResult(int victories, int defeats, int ties) {
-        this.table.checkResult(3,1);
-        this.table.checkResult(-3,-1);
         switch (this.table.getResult()) {
             case 1: this.victories = victories + 1; break;
             case -1: this.defeats = defeats + 1;break;
