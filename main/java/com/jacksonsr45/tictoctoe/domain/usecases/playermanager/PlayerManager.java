@@ -1,9 +1,9 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.playermanager;
 
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.playermanager.PlayerEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.PlayerManagerInterface;
 import com.jacksonsr45.tictoctoe.domain.presenter.PlayerManagerPresenterInterface;
-import com.jacksonsr45.tictoctoe.domain.request.PlayerManagerRequest;
+import com.jacksonsr45.tictoctoe.domain.request.playermanager.PlayerRequest;
 
 public class PlayerManager {
     private PlayerManagerInterface player;
@@ -12,11 +12,11 @@ public class PlayerManager {
         this.player = player;
     }
 
-    public void addPlayer(PlayerManagerRequest request, PlayerManagerPresenterInterface presenter) {
+    public void addPlayer(PlayerRequest request, PlayerManagerPresenterInterface presenter) {
         presenter.present(player.addPlayer(new PlayerEntity(request)));
     }
 
-    public void updatePlayer(PlayerManagerRequest request, PlayerManagerPresenterInterface presenter) {
+    public void updatePlayer(PlayerRequest request, PlayerManagerPresenterInterface presenter) {
         presenter.present(player.updatedPlayer(new PlayerEntity(request)));
     }
 

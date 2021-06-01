@@ -1,25 +1,17 @@
 package com.jacksonsr45.tictoctoe.userinterface.activit;
 
-import android.app.AlertDialog;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerEntity;
-import com.jacksonsr45.tictoctoe.domain.request.PlayerManagerRequest;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerManagerResponse;
-import com.jacksonsr45.tictoctoe.infrastructure.database.DBOpenHelper;
-import com.jacksonsr45.tictoctoe.infrastructure.factory.DBFactory;
+import com.jacksonsr45.tictoctoe.domain.entity.playermanager.PlayerEntity;
+import com.jacksonsr45.tictoctoe.domain.request.playermanager.PlayerRequest;
+import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 import com.jacksonsr45.tictoctoe.infrastructure.repository.PlayerManagerRepository;
-import com.jacksonsr45.tictoctoe.userinterface.activit.R;
-
-import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     private PlayerEntity playerEntity;
     private PlayerManagerRepository repository;
-    private PlayerManagerRequest request;
-    private PlayerManagerResponse response;
+    private PlayerRequest request;
+    private PlayerResponse response;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

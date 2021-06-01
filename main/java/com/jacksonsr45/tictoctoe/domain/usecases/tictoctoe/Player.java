@@ -1,37 +1,33 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe;
 
 public class Player {
-    private String id;
-    private String name;
+    private int line, column;
 
-    public Player(String id, String name) {
-        this.setId(id);
-        this.name = name;
-    }
-
-    public void move(Table table, int line, int column) {
+    public void move(Table table, int line, int column, int value) {
         boolean validation = false;
         do {
             if (table.isValid(line, column)) {
-                table.setField(line, column, 1);
+                table.setField(line, column, value);
+                this.setLine(line);
+                this.setColumn(column);
                 validation = true;
             }
         } while (!validation);
     }
 
-    public String getId() {
-        return id;
+    public int getLine() {
+        return line;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setLine(int line) {
+        this.line = line;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getColumn() {
+        return column;
     }
 
-    public String getName() {
-        return name;
+    public void setColumn(int column) {
+        this.column = column;
     }
 }

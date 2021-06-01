@@ -1,18 +1,18 @@
 package com.jacksonsr45.tictoctoe.domain.gateway;
 
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerEntity;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerManagerResponse;
+import com.jacksonsr45.tictoctoe.domain.entity.playermanager.PlayerEntity;
+import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 
 import java.util.ArrayList;
 
 public interface PlayerManagerInterface {
-    public PlayerManagerResponse addPlayer(PlayerEntity player);
+    public PlayerResponse addPlayer(PlayerEntity player);
 
-    public PlayerManagerResponse updatedPlayer(PlayerEntity player);
+    public PlayerResponse updatedPlayer(PlayerEntity player);
 
-    public PlayerManagerResponse deletePlayer(String id);
+    public PlayerResponse deletePlayer(String id);
 
-    public ArrayList<PlayerManagerResponse> listPlayers();
+    public ArrayList<PlayerResponse> listPlayers();
 
-    public PlayerManagerResponse showPlayer(String id);
+    public PlayerResponse showPlayer(String id);
 }

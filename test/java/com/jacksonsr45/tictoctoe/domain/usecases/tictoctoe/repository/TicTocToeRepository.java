@@ -1,22 +1,33 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe.repository;
 
-import com.jacksonsr45.tictoctoe.domain.entity.TicTocToeEntity;
+
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.TicTocToeInterface;
-import com.jacksonsr45.tictoctoe.domain.response.TicTocToeResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse;
 
 public class TicTocToeRepository implements TicTocToeInterface {
+
     @Override
-    public TicTocToeResponse initGame(TicTocToeEntity entity) {
-        return new TicTocToeResponse(entity);
+    public MatchResponse startMatch(MatchEntity entity) {
+        return new MatchResponse(entity);
     }
 
     @Override
-    public TicTocToeResponse computerMove(TicTocToeEntity entity) {
-        return new TicTocToeResponse(entity);
+    public MovementsResponse computerMove(MovementEntity entity) {
+        return new MovementsResponse(entity);
     }
 
     @Override
-    public TicTocToeResponse playerMove(TicTocToeEntity entity) {
-        return new TicTocToeResponse(entity);
+    public MovementsResponse playerMove(MovementEntity entity) {
+        return new MovementsResponse(entity);
+    }
+
+    @Override
+    public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity) {
+        return new PlayerHistoryResponse(entity);
     }
 }

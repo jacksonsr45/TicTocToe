@@ -1,18 +1,22 @@
-package com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager;
+package com.jacksonsr45.tictoctoe.domain.request.playerhistory;
 
-public class Movements {
+import com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager.Movements;
+
+public class MovementRequest {
+    private Movements movements;
     private int id;
     private String matchId;
     private int line;
     private int column;
     private int value;
 
-    public Movements(int id, String matchId, int line, int column, int value) {
-        this.setId(id);
-        this.setMatchId(matchId);
-        this.setLine(line);
-        this.setColumn(column);
-        this.setValue(value);
+    public MovementRequest(int id, String matchId, int line, int column, int value) {
+        this.movements = new Movements(id, matchId, line, column, value);
+        this.setId(this.movements.getId());
+        this.setMatchId(this.movements.getMatchId());
+        this.setLine(this.movements.getLine());
+        this.setColumn(this.movements.getColumn());
+        this.setValue(this.movements.getValue());
     }
 
     public int getId() {

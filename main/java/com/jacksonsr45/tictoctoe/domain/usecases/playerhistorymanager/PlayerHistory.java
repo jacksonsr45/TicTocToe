@@ -1,34 +1,23 @@
-package com.jacksonsr45.tictoctoe.domain.request;
+package com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager;
 
-import com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager.Match;
-
-import java.util.ArrayList;
 import java.util.UUID;
 
-public class PlayerHistoryRequest {
+public class PlayerHistory {
     private String id;
     private String playerId;
-    private ArrayList<Match> match = new ArrayList<Match>();
     private int total, victories, defeats, ties;
 
-    public PlayerHistoryRequest(String playerId) {
+    public PlayerHistory(String playerId) {
         this.setId(UUID.randomUUID().toString());
         this.setPlayerId(playerId);
+        this.setTotal(0);
+        this.setVictories(0);
+        this.setDefeats(0);
+        this.setTies(0);
     }
 
-    public PlayerHistoryRequest(String id, String playerId, int level, int victories, int defeats, int ties, int total) {
+    public PlayerHistory(String id, String playerId, int victories, int defeats, int ties, int total) {
         this.setId(id);
-        this.match.add(new Match(level));
-        this.setPlayerId(playerId);
-        this.setTotal(total);
-        this.setVictories(victories);
-        this.setDefeats(defeats);
-        this.setTies(ties);
-    }
-
-    public PlayerHistoryRequest(String id, String matchId, String playerId, int victories, int defeats, int ties, int total) {
-        this.setId(id);
-        this.match.add(new Match(matchId));
         this.setPlayerId(playerId);
         this.setTotal(total);
         this.setVictories(victories);
@@ -50,10 +39,6 @@ public class PlayerHistoryRequest {
 
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
-    }
-
-    public ArrayList<Match> getMatch() {
-        return match;
     }
 
     public int getTotal() {

@@ -1,10 +1,9 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager.repository;
 
-import com.jacksonsr45.tictoctoe.domain.entity.PlayerHistoryEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.PlayerHistoryInterface;
-import com.jacksonsr45.tictoctoe.domain.request.PlayerHistoryRequest;
-import com.jacksonsr45.tictoctoe.domain.response.PlayerHistoryResponse;
-import com.jacksonsr45.tictoctoe.domain.usecases.playerhistorymanager.Match;
+import com.jacksonsr45.tictoctoe.domain.request.playerhistory.PlayerHistoryRequest;
+import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
 
 import java.util.ArrayList;
 
@@ -28,14 +27,8 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     @Override
     public PlayerHistoryResponse showPlayerHistory(String id) {
         PlayerHistoryRequest request = new PlayerHistoryRequest(playerId1);
-        request.getMatch().add(new Match(2));
-        request.getMatch().add(new Match(2));
-        request.getMatch().add(new Match(2));
-        request.getMatch().get(0).setId(historyId1);
-        request.getMatch().get(1).setId(historyId2);
-        request.getMatch().get(2).setId(historyId3);
         PlayerHistoryResponse response = new PlayerHistoryResponse(new PlayerHistoryEntity(request));
-        if (response.getPlayerId() == id) return response;
+        if (response.playerId == id) return response;
         return null;
     }
 

@@ -1,9 +1,14 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe;
 
-import com.jacksonsr45.tictoctoe.domain.entity.TicTocToeEntity;
+
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.TicTocToeInterface;
 import com.jacksonsr45.tictoctoe.domain.presenter.TicTocToePresenterInterface;
-import com.jacksonsr45.tictoctoe.domain.request.TicTocToeRequest;
+import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MatchRequest;
+import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MovementRequest;
+import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.PlayerHistoryRequest;
 
 public class TicTocToe {
     private TicTocToeInterface ticTocToe;
@@ -12,16 +17,19 @@ public class TicTocToe {
         this.ticTocToe = ticTocToe;
     }
 
-    public void initGame(TicTocToeRequest request, TicTocToePresenterInterface presenter) {
-        presenter.presenter(ticTocToe.initGame(new TicTocToeEntity(request)));
+    public void startMatch(MatchRequest request, TicTocToePresenterInterface presenter) {
+        presenter.present(this.ticTocToe.startMatch(new MatchEntity(request)));
     }
 
-    public void computerMove(TicTocToeRequest request, TicTocToePresenterInterface presenter) {
-        request.getComputer().move(request.getTable(), 2, -1);
-        presenter.presenter(ticTocToe.computerMove(new TicTocToeEntity(request)));
+    public void computerMove(MovementRequest request, TicTocToePresenterInterface presenter) {
+        presenter.present(this.ticTocToe.computerMove(new MovementEntity(request)));
     }
 
-    public void playerMove(TicTocToeRequest request, TicTocToePresenterInterface presenter) {
-        presenter.presenter(ticTocToe.playerMove(new TicTocToeEntity(request)));
+    public void playerMove(MovementRequest request, TicTocToePresenterInterface presenter) {
+        presenter.present(this.ticTocToe.playerMove(new MovementEntity(request)));
+    }
+
+    public void setPlayerHistory(PlayerHistoryRequest request, TicTocToePresenterInterface presenter) {
+        presenter.present(this.ticTocToe.setPlayerHistory(new PlayerHistoryEntity(request)));
     }
 }
