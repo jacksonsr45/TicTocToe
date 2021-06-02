@@ -8,7 +8,7 @@ import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse
 public class TicTocToePresenter implements TicTocToePresenterInterface {
     private MatchResponse match;
     private MovementsResponse movements;
-    private PlayerHistoryResponse player;
+    private PlayerHistoryResponse playerHistory;
 
     @Override
     public void present(MatchResponse response) {
@@ -22,7 +22,7 @@ public class TicTocToePresenter implements TicTocToePresenterInterface {
 
     @Override
     public void present(PlayerHistoryResponse response) {
-        this.player = response;
+        this.playerHistory = response;
     }
 
     public MatchResponse getMatch() {
@@ -33,7 +33,7 @@ public class TicTocToePresenter implements TicTocToePresenterInterface {
         return movements;
     }
 
-    public PlayerHistoryResponse getPlayer() {
-        return player;
+    public PlayerHistoryResponse getPlayerHistory() {
+        return playerHistory;
     }
 }
