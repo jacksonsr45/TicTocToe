@@ -50,12 +50,11 @@ public class PlayerManagerRepository implements PlayerManagerInterface {
     @Override
     public ArrayList<PlayerResponse> listPlayers() {
         ArrayList<PlayerResponse> players = new ArrayList<PlayerResponse>();
-        if (players == null) return null;
         StringBuilder query = new StringBuilder();
         query.append("SELECT * FROM player");
         Cursor result = this.connection.rawQuery(query.toString(), null);
+        result.moveToFirst();
         if (result.getCount() > 0) {
-            result.moveToFirst();
             do {
                 players.add(new PlayerResponse(result));
             }while (result.moveToNext());
