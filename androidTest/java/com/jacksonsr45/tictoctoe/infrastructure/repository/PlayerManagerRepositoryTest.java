@@ -41,6 +41,31 @@ public class PlayerManagerRepositoryTest {
     }
 
     @Test
+    public void shouldBeDeletePlayerInDataBase() {
+        this.request = new PlayerRequest(this.name);
+        this.entity = new PlayerEntity(request);
+        this.playerManagerRepository.addPlayer(this.entity);
+        this.playerManagerRepository.deletePlayer(this.request.getId());
+
+        this.response = this.playerManagerRepository.showPlayer(this.request.getId());
+
+        assertNull(null, this.response);
+    }
+
+    @Test
+    public void shouldBeShowPlayerGetIdDataAndReturnValue() {
+        this.request = new PlayerRequest(this.name);
+        this.entity = new PlayerEntity(request);
+        this.playerManagerRepository.addPlayer(this.entity);
+
+        this.response = this.playerManagerRepository.showPlayer(this.request.getId());
+
+        assertEquals(this.request.getId(), this.response.id);
+        assertEquals(this.name, this.response.name);
+        this.playerManagerRepository.deletePlayer(request.getId());
+    }
+
+    @Test
     public void shouldBeUpdatePlayerSetValuesByUpdatePlayer() {
         this.request = new PlayerRequest(this.name);
         this.entity = new PlayerEntity(request);
@@ -73,16 +98,15 @@ public class PlayerManagerRepositoryTest {
 
         this.players = this.playerManagerRepository.listPlayers();
 
-        assertEquals(true, this.players.contains(request.getId()));
-//        assertEquals(request1.getId(), this.players.get(1).id);
-//        assertEquals(request1.getName(), this.players.get(1).name);
-//        assertEquals(request2.getId(), this.players.get(2).id);
-//        assertEquals(request2.getName(), this.players.get(2).name);
-//        assertEquals(request3.getId(), this.players.get(3).id);
-//        assertEquals(request3.getName(), this.players.get(3).name);
+        assertEquals(ArrayList.class, this.players.getClass());
+        for (PlayerResponse test: this.players) {
+            assertEquals(PlayerResponse.class, test.getClass());
+            assertNotEquals(null, test.id);
+            assertNotEquals(null, test.name);
+        }
         this.playerManagerRepository.deletePlayer(request.getId());
-//        this.playerManagerRepository.deletePlayer(request1.getId());
-//        this.playerManagerRepository.deletePlayer(request2.getId());
-//        this.playerManagerRepository.deletePlayer(request3.getId());
+        this.playerManagerRepository.deletePlayer(request1.getId());
+        this.playerManagerRepository.deletePlayer(request2.getId());
+        this.playerManagerRepository.deletePlayer(request3.getId());
     }
 }
