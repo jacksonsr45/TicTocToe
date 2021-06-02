@@ -19,7 +19,7 @@ public class PlayerManagerRepositoryTest {
     private Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
     private PlayerManagerRepository playerManagerRepository = new PlayerManagerRepository(appContext);
     private ArrayList<PlayerResponse> players;
-    private PlayerResponse response, response1, response2, response3;
+    private PlayerResponse response;
     private PlayerRequest request, request1, request2, request3;
     private PlayerEntity entity, entity1, entity2, entity3;
     private String name = "Test One";
@@ -82,7 +82,7 @@ public class PlayerManagerRepositoryTest {
     }
 
     @Test
-    public void shouldBeListPlayerGetValuesAndCompareWithDataResponse() {
+    public void shouldBeListPlayerGetValuesAndCompareAreIsArrayListWithPlayerResponse() {
         this.request = new PlayerRequest(this.name);
         this.entity = new PlayerEntity(request);
         this.playerManagerRepository.addPlayer(this.entity);

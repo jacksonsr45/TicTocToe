@@ -19,19 +19,24 @@ public class PlayerHistoryManager {
         presenter.present(this.playerHistory.createPlayerHistory(new PlayerHistoryEntity(request)));
     }
 
+
+    public void deletePlayerHistory(String playerId, PlayerHistoryPresenterInterface presenter) {
+        presenter.present(this.playerHistory.deletePlayerHistory(playerId));
+    }
+
     public void showPlayerHistory(String playerId, PlayerHistoryPresenterInterface presenter) {
         presenter.present(this.playerHistory.showPlayerHistory(playerId));
     }
 
-    public void listMatch(PlayerHistoryPresenterInterface presenter) {
-        presenter.present(this.playerHistory.listMatch());
+    public void listMatch(String playerHistoryId, PlayerHistoryPresenterInterface presenter) {
+        presenter.present(this.playerHistory.listMatch(playerHistoryId));
     }
 
     public void showMatch(String id, PlayerHistoryPresenterInterface presenter) {
         presenter.present(this.playerHistory.showMatch(id));
     }
 
-    public void listMovements(PlayerHistoryPresenterInterface presenter) {
-        presenter.present(this.playerHistory.listMovements());
+    public void listMovements(String matchId, PlayerHistoryPresenterInterface presenter) {
+        presenter.present(this.playerHistory.listMovements(matchId));
     }
 }

@@ -6,20 +6,30 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 
 public class DBOpenHelper extends SQLiteOpenHelper {
+    public static final String DATABASE = "tic_toc_toe";
+    public static final int DATABASE_VERSION = 1;
+
     public DBOpenHelper(Context context) {
-        super(context, "tic_toc_toe", null, 1);
+        super(context, DATABASE, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(ScriptDLL.getCreateTablePlayer());
-        db.execSQL(ScriptDLL.getCreateTablePlayerHistory());
-        db.execSQL(ScriptDLL.getCreateTableMatch());
-        db.execSQL(ScriptDLL.getCreateTableMovements());
+        db.beginTransaction();
+        try {
+            db.execSQL(ScriptDLL.getCreateTablePlayer());
+            db.execSQL(ScriptDLL.getCreateTablePlayerHistory());
+            db.execSQL(ScriptDLL.getCreateTableMatch());
+            db.execSQL(ScriptDLL.getCreateTableMovements());
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 }

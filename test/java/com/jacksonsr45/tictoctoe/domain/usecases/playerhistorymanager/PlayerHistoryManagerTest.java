@@ -37,6 +37,17 @@ public class PlayerHistoryManagerTest {
     }
 
     @Test
+    public void shouldBeDeletePlayerHistoryByPlayerID() {
+        PlayerHistoryRepository repository = new PlayerHistoryRepository();
+        PlayerHistoryManager playerHistory = new PlayerHistoryManager(repository);
+        PlayerHistoryPresenter presenter = new PlayerHistoryPresenter();
+
+        playerHistory.deletePlayerHistory(playerId1, presenter);
+
+        assertEquals(null, presenter.getPlayerHistory());
+    }
+
+    @Test
     public void shouldBeShowPlayerHistoryReturnPlayerValue() {
         PlayerHistoryRepository repository = new PlayerHistoryRepository();
         PlayerHistoryManager playerHistory = new PlayerHistoryManager(repository);
@@ -58,7 +69,7 @@ public class PlayerHistoryManagerTest {
         PlayerHistoryManager playerHistory = new PlayerHistoryManager(repository);
         PlayerHistoryPresenter presenter = new PlayerHistoryPresenter();
 
-        playerHistory.listMatch(presenter);
+        playerHistory.listMatch( historyId1, presenter);
 
         assertEquals(1, presenter.getMatches().get(0).level);
         assertEquals(historyId1, presenter.getMatches().get(0).playersHistoryId);
@@ -86,7 +97,7 @@ public class PlayerHistoryManagerTest {
         PlayerHistoryManager playerHistory = new PlayerHistoryManager(repository);
         PlayerHistoryPresenter presenter = new PlayerHistoryPresenter();
 
-        playerHistory.listMovements(presenter);
+        playerHistory.listMovements(matchId1, presenter);
 
         assertEquals(1, presenter.getMovements().get(0).id);
         assertEquals(matchId1, presenter.getMovements().get(0).matchId);

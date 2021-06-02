@@ -47,9 +47,18 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
         if (player.playerId == playerId) return  player;
         return null;
     }
+    
+    @Override
+    public PlayerHistoryResponse deletePlayerHistory(String playerId) {
+        PlayerHistoryRequest request = new PlayerHistoryRequest(historyId1, playerId1, 1, 0, 0, 1);
+        PlayerHistoryEntity entity = new PlayerHistoryEntity(request);
+        PlayerHistoryResponse player = new PlayerHistoryResponse(entity);
+        if (player.playerId == playerId) return  null;
+        return player;
+    }
 
     @Override
-    public ArrayList<MatchResponse> listMatch() {
+    public ArrayList<MatchResponse> listMatch(String playerHistoryId) {
         matches.add(response1);
         matches.add(response2);
         matches.add(response3);
@@ -68,7 +77,7 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
     }
 
     @Override
-    public ArrayList<MovementsResponse> listMovements() {
+    public ArrayList<MovementsResponse> listMovements(String matchId) {
         ArrayList<MovementsResponse> movements = new ArrayList<MovementsResponse>();
         MovementRequest request1 = new MovementRequest(1, matchId1, 0,0,1);
         MovementsEntity entity1 = new MovementsEntity(request1);

@@ -1,5 +1,6 @@
 package com.jacksonsr45.tictoctoe.domain.response.playerhistory;
 
+import android.database.Cursor;
 import com.jacksonsr45.tictoctoe.domain.entity.playermanager.MatchEntity;
 
 public class MatchResponse {
@@ -8,6 +9,16 @@ public class MatchResponse {
     public int level;
     public int result;
     public String createdAt;
+
+    public MatchResponse() {}
+
+    public MatchResponse(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow("id"));
+        this.playersHistoryId = cursor.getString(cursor.getColumnIndexOrThrow("player_history_id"));
+        this.level = cursor.getInt(cursor.getColumnIndexOrThrow("level"));
+        this.result = cursor.getInt(cursor.getColumnIndexOrThrow("result"));
+        this.createdAt = cursor.getString(cursor.getColumnIndexOrThrow("created_at"));
+    }
 
     public MatchResponse(MatchEntity entity) {
         this.id = entity.id;

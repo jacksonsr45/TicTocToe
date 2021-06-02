@@ -16,6 +16,10 @@ import java.util.ArrayList;
 public class PlayerHistoryRepository implements PlayerHistoryInterface {
     private SQLiteDatabase connection;
 
+    public final String TABLE_PLAYER_HISTORY = "player_history";
+    public final String TABLE_MATCH = "match";
+    public final String TABLE_MOVEMENTS = "movements";
+
     public PlayerHistoryRepository(Context context) {
         DBFactory dbFactory = new DBFactory(context);
         this.connection = dbFactory.getConnection();
@@ -30,35 +34,82 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
         contentValues.put("victories", playerHistory.victories);
         contentValues.put("defeats", playerHistory.defeats);
         contentValues.put("ties", playerHistory.ties);
-        this.connection.insertOrThrow("player_history", null, contentValues);
+        this.connection.insertOrThrow(TABLE_PLAYER_HISTORY, null, contentValues);
         return new PlayerHistoryResponse(playerHistory);
     }
 
     @Override
-    public PlayerHistoryResponse showPlayerHistory(String playerId) {
-        Cursor result = null;
-        StringBuilder query = new StringBuilder();
-        query.append("SELECT * FROM player_history WHERE player_id = ?");
+    public PlayerHistoryResponse deletePlayerHistory(String playerId) {
+        PlayerHistoryResponse response = this.showPlayerHistory(playerId);
         String[] parameter = new String[1];
         parameter[0] = playerId;
-        result = this.connection.rawQuery(query.toString(), parameter);
+        this.connection.delete(TABLE_PLAYER_HISTORY, "player_id = ?", parameter);
+        return response;
+    }
+
+    @Override
+    public PlayerHistoryResponse showPlayerHistory(String playerId) {
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(TABLE_PLAYER_HISTORY);
+        query.append(" WHERE player_id = ?");
+        String[] parameter = new String[1];
+        parameter[0] = playerId;
+        Cursor result = this.connection.rawQuery(query.toString(), parameter);
         result.moveToFirst();
         if (result.getCount() > 0) return new PlayerHistoryResponse(result);
         return null;
     }
 
     @Override
-    public ArrayList<MatchResponse> listMatch() {
-        return null;
+    public ArrayList<MatchResponse> listMatch(String playerHistoryId) {
+        ArrayList<MatchResponse> matches = new ArrayList<MatchResponse>();
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(TABLE_MATCH);
+        query.append(" WHERE player_history_id = ?");
+        String[] parameter = new String[1];
+        parameter[0] = playerHistoryId;
+        Cursor result = this.connection.rawQuery(query.toString(), parameter);
+        result.moveToFirst();
+        if (result.getCount() > 0) {
+            do {
+                matches.add(new MatchResponse(result));
+            } while (result.moveToFirst());
+        }
+        return matches;
     }
 
     @Override
     public MatchResponse showMatch(String id) {
-        return null;
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(TABLE_MATCH);
+        query.append(" WHERE id = ?");
+        String[] parameter = new String[1];
+        parameter[0] = id;
+        Cursor result = this.connection.rawQuery(query.toString(), parameter);
+        result.moveToFirst();
+        if (result.getCount() > 0)  new MatchResponse(result);
+        return new MatchResponse();
     }
 
     @Override
-    public ArrayList<MovementsResponse> listMovements() {
-        return null;
+    public ArrayList<MovementsResponse> listMovements(String matchId) {
+        ArrayList<MovementsResponse> movements = new ArrayList<MovementsResponse>();
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(TABLE_MOVEMENTS);
+        query.append(" WHERE match_id = ?");
+        String[] parameter = new String[1];
+        parameter[0] = matchId;
+        Cursor result = this.connection.rawQuery(query.toString(), parameter);
+        result.moveToFirst();
+        if (result.getCount() > 0) {
+            do {
+                movements.add(new MovementsResponse(result));
+            } while (result.moveToFirst());
+        }
+        return movements;
     }
 }

@@ -10,11 +10,13 @@ import java.util.ArrayList;
 public interface PlayerHistoryInterface {
     public PlayerHistoryResponse createPlayerHistory(PlayerHistoryEntity playerHistory);
 
+    public PlayerHistoryResponse deletePlayerHistory(String playerId);
+
     public PlayerHistoryResponse showPlayerHistory(String playerId);
 
-    public ArrayList<MatchResponse> listMatch();
+    public ArrayList<MatchResponse> listMatch(String playerHistoryId);
 
     public MatchResponse showMatch(String id);
 
-    public ArrayList<MovementsResponse> listMovements();
+    public ArrayList<MovementsResponse> listMovements(String matchId);
 }
