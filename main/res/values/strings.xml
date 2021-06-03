@@ -5,4 +5,9 @@
     <string name="app_title">Jogo da Velha</string>
     <string name="image_logo_description">Logo</string>
     <string name="text_copyright">Copyright © Jackson Severino da Rocha</string>
+    <string name="input_text_player_name">Nome de Jogador</string>
+    <string name="text_button_add_player">Cadastrar</string>
+    <string name="describe_button_add_new_player">Adcionar Novo Jogador</string>
+    <string name="describe_button_about">Sobre Jogo da Velha</string>
+    <string name="text_button_about">Sobre</string>
 </resources>
