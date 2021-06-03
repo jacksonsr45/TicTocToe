@@ -1,18 +1,16 @@
 package com.jacksonsr45.tictoctoe.infrastructure.repository;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-
+import androidx.test.platform.app.InstrumentationRegistry;
 import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
 import com.jacksonsr45.tictoctoe.domain.request.playerhistory.PlayerHistoryRequest;
 import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MatchRequest;
 import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MovementRequest;
-import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
 import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
 import com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe.Table;
 import org.junit.After;
@@ -22,7 +20,7 @@ import org.junit.runner.RunWith;
 
 import java.util.UUID;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class TicTocToeRepositoryTest {
@@ -101,6 +99,29 @@ public class TicTocToeRepositoryTest {
         assertEquals(2, this.movementsResponse.line);
         assertEquals(2, this.movementsResponse.column);
         assertEquals(1, this.movementsResponse.value);
+    }
+
+    @Test
+    public void shouldBeSetPlayerHistoryReturnCorrectInPlayerHistoryResponse() {
+        Table table = new Table();
+        this.matchResponse = this.repository.startMatch(entity);
+        com.jacksonsr45.tictoctoe.domain.request.tictoctoe.PlayerHistoryRequest playerHistoryRequest =
+                new com.jacksonsr45.tictoctoe.domain.request.tictoctoe.PlayerHistoryRequest(
+                        table,
+                        playerHistoryId,
+                        playerId,
+                        1,0,0,1);
+        com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity playerHistoryEntity =
+                new com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity(playerHistoryRequest);
+        com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse playerHistoryResponse;
+        playerHistoryResponse = this.repository.setPlayerHistory(playerHistoryEntity);
+
+        assertEquals(playerHistoryId, playerHistoryResponse.id);
+        assertEquals(playerId, playerHistoryResponse.playerId);
+        assertEquals(2, playerHistoryResponse.total);
+        assertEquals(0, playerHistoryResponse.victories);
+        assertEquals(0, playerHistoryResponse.defeats);
+        assertEquals(2, playerHistoryResponse.ties);
     }
 
     @After

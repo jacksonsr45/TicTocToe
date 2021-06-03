@@ -16,6 +16,7 @@ public class TicTocToeRepository implements TicTocToeInterface {
     private SQLiteDatabase connection;
     private final String TABLE_MATCH = "match";
     private final String TABLE_MOVEMENTS = "movements";
+    private final String TABLE_PLAYER_HISTORY = "player_history";
 
     public TicTocToeRepository(Context context) {
         DBFactory dbFactory = new DBFactory(context);
@@ -58,7 +59,15 @@ public class TicTocToeRepository implements TicTocToeInterface {
 
     @Override
     public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity) {
-
-        return null;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("player_id", entity.playerId);
+        contentValues.put("total", entity.total);
+        contentValues.put("victories", entity.victories);
+        contentValues.put("defeats", entity.defeats);
+        contentValues.put("ties", entity.ties);
+        String[] parameter = new String[1];
+        parameter[0] = entity.id;
+        this.connection.update( TABLE_PLAYER_HISTORY, contentValues, "id = ?", parameter);
+        return new PlayerHistoryResponse(entity);
     }
 }
