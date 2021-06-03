@@ -15,6 +15,7 @@ import com.jacksonsr45.tictoctoe.infrastructure.factory.DBFactory;
 public class TicTocToeRepository implements TicTocToeInterface {
     private SQLiteDatabase connection;
     private final String TABLE_MATCH = "match";
+    private final String TABLE_MOVEMENTS = "movements";
 
     public TicTocToeRepository(Context context) {
         DBFactory dbFactory = new DBFactory(context);
@@ -35,16 +36,29 @@ public class TicTocToeRepository implements TicTocToeInterface {
 
     @Override
     public MovementsResponse computerMove(MovementEntity entity) {
-        return null;
+        this.setMovements(entity);
+        return new MovementsResponse(entity);
     }
 
     @Override
     public MovementsResponse playerMove(MovementEntity entity) {
-        return null;
+        this.setMovements(entity);
+        return new MovementsResponse(entity);
+    }
+
+    private void setMovements(MovementEntity entity) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id", entity.id);
+        contentValues.put("match_id", entity.matchId);
+        contentValues.put("table_line", entity.line);
+        contentValues.put("table_column", entity.column);
+        contentValues.put("value", entity.value);
+        this.connection.insertOrThrow(TABLE_MOVEMENTS, null, contentValues);
     }
 
     @Override
     public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity) {
+
         return null;
     }
 }

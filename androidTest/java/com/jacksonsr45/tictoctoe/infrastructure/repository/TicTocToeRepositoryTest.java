@@ -7,10 +7,14 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.jacksonsr45.tictoctoe.domain.entity.playerhistory.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
+import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
 import com.jacksonsr45.tictoctoe.domain.request.playerhistory.PlayerHistoryRequest;
 import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MatchRequest;
+import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MovementRequest;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
 import com.jacksonsr45.tictoctoe.domain.response.playerhistory.PlayerHistoryResponse;
+import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
+import com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe.Table;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,6 +30,7 @@ public class TicTocToeRepositoryTest {
     private TicTocToeRepository repository;
     private PlayerHistoryRepository playerHistoryRepository;
     private PlayerHistoryResponse playerHistoryResponse;
+    private MovementsResponse movementsResponse;
     private MatchRequest matchRequest;
     private MatchResponse matchResponse;
     private MatchEntity entity;
@@ -62,6 +67,40 @@ public class TicTocToeRepositoryTest {
         assertEquals(this.playerHistoryId, this.matchResponse.playersHistoryId);
         assertEquals(0, this.matchResponse.result);
         assertEquals(this.level, this.matchResponse.level);
+    }
+
+    @Test
+    public void shouldComputerMoveHasReturnCorrectInMovementResponse() {
+        Table table = new Table();
+        table.setField(0,0,1);
+        table.setField(1,1,1);
+        this.matchResponse = this.repository.startMatch(entity);
+        MovementRequest movementRequest = new MovementRequest(3, this.matchResponse.id, table, 2, 2);
+        MovementEntity movementEntity = new MovementEntity(movementRequest);
+
+        this.movementsResponse = this.repository.computerMove(movementEntity);
+
+        assertEquals(MovementsResponse.class, this.movementsResponse.getClass());
+        assertEquals(3, this.movementsResponse.id);
+        assertEquals(2, this.movementsResponse.line);
+        assertEquals(2, this.movementsResponse.column);
+        assertEquals(-1, this.movementsResponse.value);
+    }
+
+    @Test
+    public void shouldBePlayerMoveHasReturnCorrectInMovementResponse() {
+        Table table = new Table();
+        this.matchResponse = this.repository.startMatch(entity);
+        MovementRequest movementRequest = new MovementRequest(4, this.matchResponse.id, table, 2, 2, 1);
+        MovementEntity movementEntity = new MovementEntity(movementRequest);
+
+        this.movementsResponse = this.repository.playerMove(movementEntity);
+
+        assertEquals(MovementsResponse.class, this.movementsResponse.getClass());
+        assertEquals(4, this.movementsResponse.id);
+        assertEquals(2, this.movementsResponse.line);
+        assertEquals(2, this.movementsResponse.column);
+        assertEquals(1, this.movementsResponse.value);
     }
 
     @After

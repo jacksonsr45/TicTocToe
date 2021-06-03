@@ -49,9 +49,7 @@ public class ScriptDLL {
     public static String getCreateTableMovements() {
         StringBuilder query = new StringBuilder();
         query.append("create table if not exists movements (");
-        query.append(" id integer not null");
-        query.append(" constraint movements_pk");
-        query.append(" primary key,");
+        query.append(" id integer not null ,");
         query.append(" table_line int not null,");
         query.append(" table_column int not null,");
         query.append(" value int not null,");
