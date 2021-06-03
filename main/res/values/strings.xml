@@ -2,4 +2,7 @@
     <string name="app_name">TicTocToe</string>
     <string name="action_ok">OK</string>
     <string name="dialog_title_error">Error</string>
+    <string name="app_title">Jogo da Velha</string>
+    <string name="image_logo_description">Logo</string>
+    <string name="text_copyright">Copyright © Jackson Severino da Rocha</string>
 </resources>

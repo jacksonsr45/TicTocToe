@@ -5,14 +5,32 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:background="@color/light_orange"
+        tools:context="com.jacksonsr45.tictoctoe.userinterface.activity.MainActivity"
+        android:id="@+id/landingPageLayout">
     <TextView
+            android:text="@string/app_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/size_logo"
+            android:textColor="@color/black"
+            android:fontFamily="@font/rancho"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="10dp"/>
+    <ImageView
+            android:layout_width="250dp"
+            android:layout_height="180dp" app:srcCompat="@drawable/ic_image_logo"
+            android:id="@+id/landingPageImageLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:contentDescription="@string/image_logo_description" android:layout_marginTop="20dp"/>
+    <TextView
+            android:text="@string/text_copyright"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/roboto_black"
+            android:textSize="@dimen/size_copyright"
+            android:textColor="@color/light_black"
+            android:layout_height="wrap_content" android:id="@+id/landingPageTextCopyright"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="10dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
