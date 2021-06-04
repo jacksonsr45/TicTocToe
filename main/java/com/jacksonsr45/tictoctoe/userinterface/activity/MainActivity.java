@@ -1,15 +1,19 @@
 package com.jacksonsr45.tictoctoe.userinterface.activity;
 
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.jacksonsr45.tictoctoe.userinterface.activit.R;
+import com.jacksonsr45.tictoctoe.userinterface.activity.R;
 
 public class MainActivity extends AppCompatActivity {
+    private Intent testIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_player);
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_main);
+
+        this.testIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(this.testIntent);
     }
 }

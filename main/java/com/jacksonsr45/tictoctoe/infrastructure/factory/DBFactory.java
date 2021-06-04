@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import com.jacksonsr45.tictoctoe.infrastructure.database.DBOpenHelper;
-import com.jacksonsr45.tictoctoe.userinterface.activit.R;
+import com.jacksonsr45.tictoctoe.userinterface.activity.R;
 
 public class DBFactory {
     private SQLiteDatabase connection;

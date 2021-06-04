@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@color/light_orange"
+           tools:context="com.jacksonsr45.tictoctoe.userinterface.fragments.PlayerHistoryFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:id="@+id/playerHistoryLayout">
+        <TextView
+                android:text="@string/text_view_data"
+                android:layout_width="0dp"
+                android:background="@drawable/table_result_background"
+                android:layout_height="wrap_content" android:id="@+id/textViewTableDate"
+                android:fontFamily="@font/rancho"
+                android:textSize="@dimen/size_text_result"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+                android:gravity="center" android:paddingLeft="20dp" android:paddingTop="5dp"
+                android:paddingRight="20dp"/>
+        <TextView
+                android:text="@string/text_view_result"
+                android:layout_width="0dp"
+                android:background="@drawable/table_result_background"
+                android:layout_height="wrap_content" android:id="@+id/textViewTableResult"
+                android:fontFamily="@font/rancho"
+                android:textSize="@dimen/size_text_result"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/textViewTableDate" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="10dp" android:gravity="center" android:paddingTop="5dp"
+                android:paddingLeft="30dp" android:paddingRight="30dp"/>
+        <TextView
+                android:text="@string/text_view_movements"
+                android:layout_width="0dp"
+                android:background="@drawable/table_result_background"
+                android:layout_height="wrap_content" android:id="@+id/textViewTableTotalMove"
+                android:fontFamily="@font/rancho"
+                android:textSize="@dimen/size_text_result"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/textViewTableResult" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp" android:layout_marginEnd="10dp"
+                android:gravity="center" android:paddingTop="5dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="@color/beige"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" android:layout_marginRight="10dp" android:layout_marginEnd="10dp"
+                tools:listitem="@layout/list_player_history"
+                android:id="@+id/listViewResult" app:layout_constraintTop_toBottomOf="@+id/textViewTableDate"/>
+        <TextView
+                android:text="@string/text_view_vitcoty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewVictories"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/listViewResult"
+                android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+        <TextView
+                android:text="@string/text_view_result_victories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewTotalVictories"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/listViewResult"
+                android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginEnd="10dp"/>
+        <TextView
+                android:text="@string/text_view_defeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewDefeats"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewVictories"
+                android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+        <TextView
+                android:text="@string/text_view_result_defeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewTotalDefeats"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewTotalVictories"
+                android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginEnd="10dp"/>
+        <TextView
+                android:text="@string/text_view_ties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewTies"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewDefeats"
+                android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+        <TextView
+                android:text="@string/text_view_result_ties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewTotalTies"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewTotalDefeats"
+                android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginEnd="10dp"/>
+        <TextView
+                android:text="@string/text_view_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewTotal"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewTies"
+                android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"/>
+        <TextView
+                android:text="@string/text_view_result_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textViewResultTotal"
+                android:fontFamily="@font/rancho"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_text_result"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/textViewTotalTies"
+                android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginEnd="10dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

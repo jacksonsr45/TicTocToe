@@ -15,4 +15,28 @@
     <string name="list_view_player_name">Player Name</string>
     <string name="describe_button_delete_player">Deletar Jogador</string>
     <string name="describe_button_select_player">Selecione Jogador</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_level_easy">Fácil</string>
+    <string name="text_view_medium">Médio</string>
+    <string name="text_view_hard">Difícil</string>
+    <string name="text_view_exit">Sair</string>
+    <string name="describe_level_easy">Nível Fácil</string>
+    <string name="describe_button_medium">Nível Médio</string>
+    <string name="describe_level_hard">Nǘel Difícil</string>
+    <string name="describe_button_exit">Sair do Jogo</string>
+    <string name="text_view_vitcoty">Vitorias:</string>
+    <string name="text_view_defeats">Derrotas:</string>
+    <string name="text_view_ties">Empates:</string>
+    <string name="text_view_total">Total:</string>
+    <string name="text_view_result_victories">0</string>
+    <string name="text_view_result_defeats">0</string>
+    <string name="text_view_result_ties">0</string>
+    <string name="text_view_result_total">0</string>
+    <string name="text_view_data">Data</string>
+    <string name="text_view_result">Resultado</string>
+    <string name="text_view_movements">Jogadas</string>
+    <string name="text_view_result_value_date">00/11/22</string>
+    <string name="image_result"/>
+    <string name="text_result_total_move">0</string>
 </resources>
