@@ -23,7 +23,6 @@
             android:hint="@string/input_text_player_name"
             android:inputType="textPersonName"
             android:background="@drawable/corners_fields"
-            android:text="@string/input_text_player_name"
             android:fontFamily="@font/rancho"
             android:textColor="@color/black"
             android:textSize="@dimen/size_input_text"

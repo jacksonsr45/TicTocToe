@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content" android:id="@+id/listPlayer">
+
+    <TextView
+            android:text="@string/list_view_player_name"
+            android:layout_height="wrap_content" android:id="@+id/textListPlayerName"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_text_list_player"
+            android:fontFamily="@font/rancho"
+            android:background="@drawable/layer_list"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_button"
+            android:id="@+id/buttonListDeletePlayer" android:padding="3dp"
+            app:srcCompat="@drawable/ic_button_cancel" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp" android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" android:contentDescription="@string/describe_button_delete_player"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_button"
+            app:srcCompat="@drawable/ic_button_check"
+            android:id="@+id/buttonListSelectPlayer" app:layout_constraintEnd_toStartOf="@+id/buttonListDeletePlayer"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="20dp" android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" android:paddingLeft="5dp" android:paddingRight="5dp"
+            android:paddingTop="2dp" android:paddingBottom="2dp"
+            android:contentDescription="@string/describe_button_select_player"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

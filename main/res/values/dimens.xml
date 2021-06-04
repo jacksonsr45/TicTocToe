@@ -3,6 +3,7 @@
     <dimen name="size_logo">60sp</dimen>
     <dimen name="size_copyright">15sp</dimen>
     <dimen name="size_input_text">30sp</dimen>
+    <dimen name="size_text_list_player">30sp</dimen>
     <dimen name="size_text_buttons">40sp</dimen>
     <dimen name="padding_input_text">5sp</dimen>
 </resources>

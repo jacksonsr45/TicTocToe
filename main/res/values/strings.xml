@@ -10,4 +10,9 @@
     <string name="describe_button_add_new_player">Adcionar Novo Jogador</string>
     <string name="describe_button_about">Sobre Jogo da Velha</string>
     <string name="text_button_about">Sobre</string>
+    <string name="describe_cancel_select_player">Cancelar seleção de jogador</string>
+    <string name="text_button_cancel">Cancelar</string>
+    <string name="list_view_player_name">Player Name</string>
+    <string name="describe_button_delete_player">Deletar Jogador</string>
+    <string name="describe_button_select_player">Selecione Jogador</string>
 </resources>
