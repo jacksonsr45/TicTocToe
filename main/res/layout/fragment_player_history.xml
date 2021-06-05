@@ -52,7 +52,7 @@
                 tools:listitem="@layout/list_player_history"
                 android:id="@+id/listViewResult" app:layout_constraintTop_toBottomOf="@+id/textViewTableDate"/>
         <TextView
-                android:text="@string/text_view_vitcoty"
+                android:text="@string/text_view_victory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textViewVictories"
                 android:fontFamily="@font/rancho"

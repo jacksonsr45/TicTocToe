@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.testIntent = new Intent(getApplicationContext(), ResultMatchActivity.class);
+        this.testIntent = new Intent(getApplicationContext(), InGameActivity.class);
         startActivity(this.testIntent);
     }
 }

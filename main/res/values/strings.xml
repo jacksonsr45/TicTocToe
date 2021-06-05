@@ -25,7 +25,7 @@
     <string name="describe_button_medium">Nível Médio</string>
     <string name="describe_level_hard">Nǘel Difícil</string>
     <string name="describe_button_exit">Sair do Jogo</string>
-    <string name="text_view_vitcoty">Vitorias:</string>
+    <string name="text_view_victory">Vitorias:</string>
     <string name="text_view_defeats">Derrotas:</string>
     <string name="text_view_ties">Empates:</string>
     <string name="text_view_total">Total:</string>
@@ -54,4 +54,17 @@
     <string name="text_result_table_g"/>
     <string name="text_result_table_h"/>
     <string name="text_result_table_i"/>
+
+    <string name="text_table_a"/>
+    <string name="text_table_b"/>
+    <string name="text_table_c"/>
+    <string name="text_table_d"/>
+    <string name="text_table_e"/>
+    <string name="text_table_f"/>
+    <string name="text_table_g"/>
+    <string name="text_table_h"/>
+    <string name="text_table_i"/>
+    <string name="text_view_in_game">Em Jogo</string>
+    <string name="describe_button_cancel">Cancelar partida</string>
+    <string name="text_button_cancel_match">Cancelar</string>
 </resources>
