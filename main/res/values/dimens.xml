@@ -9,4 +9,5 @@
     <dimen name="size_text_smart_tab_layout">18sp</dimen>
     <dimen name="size_text_result">30sp</dimen>
     <dimen name="padding_input_text">5sp</dimen>
+    <dimen name="size_button_text_table">70sp</dimen>
 </resources>

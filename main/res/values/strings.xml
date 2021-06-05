@@ -39,4 +39,19 @@
     <string name="text_view_result_value_date">00/11/22</string>
     <string name="image_result"/>
     <string name="text_result_total_move">0</string>
+    <string name="text_result">Resultado</string>
+    <string name="text_result_match">da partida</string>
+    <string name="describe_table_area">Tabela de jogo</string>
+    <string name="describe_select_button_table">Selecione um campo para jogar</string>
+    <string name="describe_button_back">Voltar</string>
+    <string name="text_button_back">Voltar</string>
+    <string name="text_result_table_a"/>
+    <string name="text_result_table_b"/>
+    <string name="text_result_table_c"/>
+    <string name="text_result_table_d"/>
+    <string name="text_result_table_e"/>
+    <string name="text_result_table_f"/>
+    <string name="text_result_table_g"/>
+    <string name="text_result_table_h"/>
+    <string name="text_result_table_i"/>
 </resources>
