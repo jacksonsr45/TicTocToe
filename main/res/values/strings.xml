@@ -67,4 +67,10 @@
     <string name="text_view_in_game">Em Jogo</string>
     <string name="describe_button_cancel">Cancelar partida</string>
     <string name="text_button_cancel_match">Cancelar</string>
+    <string name="describe_result_area">Area de resultado</string>
+    <string name="describe_emoji_result">Emoji de resultado</string>
+    <string name="describe_star_result">Estrela de resultado</string>
+    <string name="describe_button_continue_game">Continuar Jogo</string>
+    <string name="text_continue">Continuar</string>
+    <string name="describe_button_return_to_home">Voltar a Home</string>
 </resources>
