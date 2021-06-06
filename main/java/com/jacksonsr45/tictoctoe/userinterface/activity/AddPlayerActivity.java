@@ -32,12 +32,13 @@ public class AddPlayerActivity extends AppCompatActivity {
     }
 
     public void addPlayer(View view) {
-        this.request = new PlayerRequest(this.textPlayerName.toString());
+        this.request = new PlayerRequest(String.valueOf(this.textPlayerName.getText()));
         this.player.addPlayer(this.request,this.presenter);
         this.intent = new Intent(getApplicationContext(), HomeActivity.class);
         this.intent.putExtra("id", this.presenter.getPlayer().id);
         this.intent.putExtra("name", this.presenter.getPlayer().name);
         startActivity(this.intent);
+        System.out.println(request.getName());
     }
 
     public void getAboutPage(View view) {

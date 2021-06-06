@@ -34,7 +34,7 @@
             android:padding="0dp"
             app:layout_constraintTop_toBottomOf="@+id/listPlayers" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="10dp"
-            android:contentDescription="@string/describe_button_select_player"/>
+            android:contentDescription="@string/describe_button_select_player" android:onClick="exitGame"/>
     <TextView
             android:text="@string/text_button_cancel"
             android:layout_width="wrap_content"
