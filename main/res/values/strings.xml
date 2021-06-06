@@ -90,4 +90,5 @@
     <string name="text_about_footer">
         Fonte de Texto: https://pt.wikipedia.org/wiki/Jogo_da_velha
     </string>
+    <string name="describe_button_easy">Fácil</string>
 </resources>
