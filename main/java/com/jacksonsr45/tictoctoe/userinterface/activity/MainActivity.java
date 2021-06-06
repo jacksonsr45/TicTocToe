@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.jacksonsr45.tictoctoe.domain.usecases.playermanager.PlayerManager;
 import com.jacksonsr45.tictoctoe.infrastructure.repository.PlayerManagerRepository;
-import com.jacksonsr45.tictoctoe.userinterface.activity.R;
 import com.jacksonsr45.tictoctoe.userinterface.presenter.PlayerManagerPresenter;
 
 public class MainActivity extends AppCompatActivity {
-    private Intent Intent;
+    private Intent intent;
     private PlayerManagerRepository repository;
     private PlayerManager player;
     private PlayerManagerPresenter presenter;
@@ -27,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     public void checkStartDefaultPage() {
         this.player.listPlayers(this.presenter);
         if (this.presenter.getPlayers().size() > 0)
-            this.Intent = new Intent(getApplicationContext(), SelectPlayerActivity.class);
-        else this.Intent = new Intent(getApplicationContext(), AddPlayerActivity.class);
-        startActivity(this.Intent);
+            this.intent = new Intent(getApplicationContext(), SelectPlayerActivity.class);
+        else this.intent = new Intent(getApplicationContext(), AddPlayerActivity.class);
+        startActivity(this.intent);
     }
 }
