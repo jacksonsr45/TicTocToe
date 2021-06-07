@@ -33,7 +33,8 @@ public class SelectPlayerActivity extends AppCompatActivity {
         this.getPlayerList();
         ListPlayersAdapter adapter = new ListPlayersAdapter(this.presenter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager layoutManager =
+                new LinearLayoutManager(getApplicationContext());
         this.listPlayers.setLayoutManager(layoutManager);
         this.listPlayers.setHasFixedSize(true);
         this.listPlayers.setAdapter(adapter);
