@@ -7,6 +7,7 @@ import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
 import com.jacksonsr45.tictoctoe.domain.gateway.TicTocToeInterface;
+import com.jacksonsr45.tictoctoe.domain.response.playermanager.PlayerResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse;
@@ -33,6 +34,14 @@ public class TicTocToeRepository implements TicTocToeInterface {
         contentValues.put("created_at", entity.createdAt);
         this.connection.insertOrThrow(TABLE_MATCH, null, contentValues);
         return new MatchResponse(entity);
+    }
+
+    @Override
+    public MatchResponse deleteMatch(String matchID) {
+        String[] parameter = new String[1];
+        parameter[0] = matchID;
+        this.connection.delete(TABLE_MATCH, "id = ?", parameter);
+        return null;
     }
 
     @Override

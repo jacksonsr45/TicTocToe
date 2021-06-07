@@ -75,7 +75,8 @@
     <string name="describe_button_return_to_home">Voltar a Home</string>
     <string name="text_about_title">Jogo da velha</string>
     <string name="text_about_sub_title">O jogo da velha (português brasileiro) ou jogo do galo (português europeu)
-        ou três em linha é um jogo e/ou passatempo popular.</string>
+        ou três em linha é um jogo e/ou passatempo popular.
+    </string>
     <string name="text_about_body">A origem é desconhecida, com indicações de que pode ter começado no antigo Egito,
         onde foram encontrados tabuleiros esculpidos na rocha, que teriam mais de 3.500 anos. De alguma forma,
         é um jogo "aparentado" dos "Merels".

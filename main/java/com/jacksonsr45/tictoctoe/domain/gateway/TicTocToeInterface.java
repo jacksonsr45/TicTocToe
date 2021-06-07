@@ -10,6 +10,8 @@ import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse
 public interface TicTocToeInterface {
     public MatchResponse startMatch(MatchEntity entity);
 
+    public MatchResponse deleteMatch(String matchID);
+
     public MovementsResponse computerMove(MovementEntity entity);
 
     public MovementsResponse playerMove(MovementEntity entity);

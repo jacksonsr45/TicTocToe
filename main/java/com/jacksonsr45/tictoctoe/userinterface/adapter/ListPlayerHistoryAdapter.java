@@ -28,7 +28,6 @@ public class ListPlayerHistoryAdapter extends RecyclerView.Adapter<ListPlayerHis
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textViewResultDate.setText(this.presenter.getMatches().get(position).createdAt);
-        holder.textViewResultTotalMove.setText(this.presenter.getMatches().get(position).level);
         switch (this.presenter.getMatches().get(position).result) {
             case 1:
                 holder.imageMinResult.setImageResource(R.drawable.ic_star_min_result_victory);
@@ -38,6 +37,17 @@ public class ListPlayerHistoryAdapter extends RecyclerView.Adapter<ListPlayerHis
                 break;
             default:
                 holder.imageMinResult.setImageResource(R.drawable.ic_star_min_result_tie);
+                break;
+        }
+        switch (this.presenter.getMatches().get(position).result) {
+            case 1:
+                holder.textViewResultTotalMove.setText(R.string.text_level_easy);
+                break;
+            case 2:
+                holder.textViewResultTotalMove.setText(R.string.text_view_medium);
+                break;
+            default:
+                holder.textViewResultTotalMove.setText(R.string.text_view_hard);
                 break;
         }
     }

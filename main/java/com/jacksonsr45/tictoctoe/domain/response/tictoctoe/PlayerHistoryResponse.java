@@ -1,9 +1,11 @@
 package com.jacksonsr45.tictoctoe.domain.response.tictoctoe;
 
 import android.database.Cursor;
+import android.os.Parcel;
+import android.os.Parcelable;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
 
-public class PlayerHistoryResponse {
+public class PlayerHistoryResponse implements Parcelable {
     public String id;
     public String playerId;
     public int total, victories, defeats, ties;
@@ -25,4 +27,40 @@ public class PlayerHistoryResponse {
         this.defeats = entity.defeats;
         this.ties = entity.ties;
     }
+
+    protected PlayerHistoryResponse(Parcel in) {
+        id = in.readString();
+        playerId = in.readString();
+        total = in.readInt();
+        victories = in.readInt();
+        defeats = in.readInt();
+        ties = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(playerId);
+        dest.writeInt(total);
+        dest.writeInt(victories);
+        dest.writeInt(defeats);
+        dest.writeInt(ties);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<PlayerHistoryResponse> CREATOR = new Creator<PlayerHistoryResponse>() {
+        @Override
+        public PlayerHistoryResponse createFromParcel(Parcel in) {
+            return new PlayerHistoryResponse(in);
+        }
+
+        @Override
+        public PlayerHistoryResponse[] newArray(int size) {
+            return new PlayerHistoryResponse[size];
+        }
+    };
 }

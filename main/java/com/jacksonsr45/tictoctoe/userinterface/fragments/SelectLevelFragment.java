@@ -78,7 +78,7 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", 1);
+                intent.putExtra("level", "1");
                 intent.putExtra("playerHistoryID", playerHistoryID);
                 startActivity(intent);
             }
@@ -90,7 +90,7 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", 2);
+                intent.putExtra("level", "2");
                 intent.putExtra("playerHistoryID", playerHistoryID);
                 startActivity(intent);
             }
@@ -102,7 +102,7 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", 3);
+                intent.putExtra("level", "3");
                 intent.putExtra("playerHistoryID", playerHistoryID);
                 startActivity(intent);
             }

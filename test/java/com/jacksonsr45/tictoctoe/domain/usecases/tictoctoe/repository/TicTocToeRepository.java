@@ -17,6 +17,11 @@ public class TicTocToeRepository implements TicTocToeInterface {
     }
 
     @Override
+    public MatchResponse deleteMatch(String matchID) {
+        return null;
+    }
+
+    @Override
     public MovementsResponse computerMove(MovementEntity entity) {
         return new MovementsResponse(entity);
     }
