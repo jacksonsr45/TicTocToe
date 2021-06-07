@@ -9,20 +9,17 @@ import com.jacksonsr45.tictoctoe.userinterface.activity.R;
 
 
 public class PlayerHistoryFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PLAYER_ID = "playerID";
 
     private String mParam1;
-    private String mParam2;
 
     public PlayerHistoryFragment() {
         // Required empty public constructor
     }
-    public static PlayerHistoryFragment newInstance(String param1, String param2) {
+    public static PlayerHistoryFragment newInstance(String playerID) {
         PlayerHistoryFragment fragment = new PlayerHistoryFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PLAYER_ID, playerID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,8 +28,7 @@ public class PlayerHistoryFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(ARG_PLAYER_ID);
         }
     }
 

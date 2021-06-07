@@ -35,8 +35,7 @@ public class AddPlayerActivity extends AppCompatActivity {
         this.request = new PlayerRequest(String.valueOf(this.textPlayerName.getText()));
         this.player.addPlayer(this.request,this.presenter);
         this.intent = new Intent(getApplicationContext(), HomeActivity.class);
-        this.intent.putExtra("id", this.presenter.getPlayer().id);
-        this.intent.putExtra("name", this.presenter.getPlayer().name);
+        this.intent.putExtra("playerID", this.presenter.getPlayer().id);
         startActivity(this.intent);
     }
 

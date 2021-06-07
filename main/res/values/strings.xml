@@ -91,4 +91,6 @@
         Fonte de Texto: https://pt.wikipedia.org/wiki/Jogo_da_velha
     </string>
     <string name="describe_button_easy">Fácil</string>
+    <string name="text_select_level">Selecione Level</string>
+    <string name="text_player_history">"Historico"</string>
 </resources>

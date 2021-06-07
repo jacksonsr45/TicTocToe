@@ -40,7 +40,7 @@ public class ListPlayersAdapter extends RecyclerView.Adapter<ListPlayersAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), HomeActivity.class);
-                intent.putExtra("id", presenter.getPlayers().get(position).id);
+                intent.putExtra("playerID", presenter.getPlayers().get(position).id);
                 v.getContext().startActivity(intent);
             }
         });
