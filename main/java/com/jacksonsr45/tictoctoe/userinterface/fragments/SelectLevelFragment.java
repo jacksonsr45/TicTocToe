@@ -68,9 +68,9 @@ public class SelectLevelFragment extends Fragment {
     public void checkPlayerHistoricExist() {
         this.request = new PlayerHistoryRequest(this.playerID);
         this.playerHistoryManager.showPlayerHistory(this.playerID, this.presenter);
-        if (this.presenter != null )
-            this.playerHistoryID = this.presenter.getPlayerHistory().id;
-        else this.playerHistoryManager.createPlayerHistory(this.request, this.presenter);
+        if (this.presenter.getPlayerHistory() == null)
+            this.playerHistoryManager.createPlayerHistory(this.request, this.presenter);
+        this.playerHistoryID = this.presenter.getPlayerHistory().id;
     }
 
     public void handleLevelEasy() {

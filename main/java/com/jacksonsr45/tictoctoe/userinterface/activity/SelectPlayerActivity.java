@@ -2,6 +2,7 @@ package com.jacksonsr45.tictoctoe.userinterface.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,11 +20,15 @@ public class SelectPlayerActivity extends AppCompatActivity {
     private PlayerManagerPresenter presenter;
     private RecyclerView listPlayers;
 
+    private ImageButton buttonAddPlayer, buttonCancelSelectPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_player);
         this.listPlayers = findViewById(R.id.listPlayers);
+        this.buttonAddPlayer = findViewById(R.id.buttonAddPlayer);
+        this.buttonCancelSelectPlayer = findViewById(R.id.buttonCancelSelectPlayer);
 
         this.getPlayerList();
         ListPlayersAdapter adapter = new ListPlayersAdapter(this.presenter);
@@ -32,6 +37,9 @@ public class SelectPlayerActivity extends AppCompatActivity {
         this.listPlayers.setLayoutManager(layoutManager);
         this.listPlayers.setHasFixedSize(true);
         this.listPlayers.setAdapter(adapter);
+
+        this.addNewPlayer();
+        this.exitGame();
     }
 
     private void getPlayerList() {
@@ -41,12 +49,22 @@ public class SelectPlayerActivity extends AppCompatActivity {
         this.player.listPlayers(this.presenter);
     }
 
-    public void addNewPlayer(View view) {
-        this.intent = new Intent(getApplicationContext(), AddPlayerActivity.class);
-        startActivity(this.intent);
+    public void addNewPlayer() {
+        this.buttonAddPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), AddPlayerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public void exitGame(View view) {
-        this.finishAffinity();
+    public void exitGame() {
+        this.buttonCancelSelectPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+            }
+        });
     }
 }
