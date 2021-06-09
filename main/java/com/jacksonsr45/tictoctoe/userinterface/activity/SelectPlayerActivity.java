@@ -1,8 +1,13 @@
 package com.jacksonsr45.tictoctoe.userinterface.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -54,8 +59,7 @@ public class SelectPlayerActivity extends AppCompatActivity {
         this.buttonAddPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), AddPlayerActivity.class);
-                startActivity(intent);
+                resultLauncher.launch(new Intent(getApplicationContext(), AddPlayerActivity.class));
             }
         });
     }
@@ -68,4 +72,15 @@ public class SelectPlayerActivity extends AppCompatActivity {
             }
         });
     }
+
+    ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                    }
+                }
+            });
 }

@@ -1,9 +1,14 @@
 package com.jacksonsr45.tictoctoe.userinterface.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.jacksonsr45.tictoctoe.domain.request.playermanager.PlayerRequest;
@@ -52,7 +57,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                 args.putString("playerID", presenter.getPlayer().id);
                 intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtras(args);
-                startActivity(intent);
+                resultLauncher.launch(intent);
             }
         });
     }
@@ -61,9 +66,19 @@ public class AddPlayerActivity extends AppCompatActivity {
         this.buttonAboutPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), AboutActivity.class);
-                startActivity(intent);
+                resultLauncher.launch(new Intent(getApplicationContext(), AboutActivity.class));
             }
         });
     }
+
+    ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                    }
+                }
+            });
 }

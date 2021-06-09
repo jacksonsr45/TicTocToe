@@ -1,9 +1,14 @@
 package com.jacksonsr45.tictoctoe.userinterface.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -268,11 +273,22 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
             if (this.ticTocToe.checkResult(this.presenter.getMovements().table)) {
                 this.extras.putParcelable("presenter", this.presenter);
                 this.intent.putExtras(this.extras);
-                startActivity(this.intent);
+                resultLauncher.launch(intent);
             }
         if (this.movement == -1) {
             this.computerMove();
             this.check();
         }
     }
+
+    ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                    }
+                }
+            });
 }

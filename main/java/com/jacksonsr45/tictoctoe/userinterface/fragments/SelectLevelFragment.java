@@ -1,8 +1,13 @@
 package com.jacksonsr45.tictoctoe.userinterface.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,7 +85,7 @@ public class SelectLevelFragment extends Fragment {
                 intent = new Intent(getContext(), InGameActivity.class);
                 intent.putExtra("level", "1");
                 intent.putExtra("playerHistoryID", playerHistoryID);
-                startActivity(intent);
+                resultLauncher.launch(intent);
             }
         });
     }
@@ -92,7 +97,7 @@ public class SelectLevelFragment extends Fragment {
                 intent = new Intent(getContext(), InGameActivity.class);
                 intent.putExtra("level", "2");
                 intent.putExtra("playerHistoryID", playerHistoryID);
-                startActivity(intent);
+                resultLauncher.launch(intent);
             }
         });
     }
@@ -104,7 +109,7 @@ public class SelectLevelFragment extends Fragment {
                 intent = new Intent(getContext(), InGameActivity.class);
                 intent.putExtra("level", "3");
                 intent.putExtra("playerHistoryID", playerHistoryID);
-                startActivity(intent);
+                resultLauncher.launch(intent);
             }
         });
     }
@@ -117,4 +122,15 @@ public class SelectLevelFragment extends Fragment {
             }
         });
     }
+
+    ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                    }
+                }
+            });
 }
