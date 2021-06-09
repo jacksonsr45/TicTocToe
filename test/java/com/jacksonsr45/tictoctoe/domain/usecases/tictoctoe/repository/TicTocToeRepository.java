@@ -35,4 +35,9 @@ public class TicTocToeRepository implements TicTocToeInterface {
     public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity) {
         return new PlayerHistoryResponse(entity);
     }
+
+    @Override
+    public PlayerHistoryResponse getPlayerHistory(String playerHistoryID) {
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.jacksonsr45.tictoctoe.infrastructure.repository;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
@@ -78,5 +79,20 @@ public class TicTocToeRepository implements TicTocToeInterface {
         parameter[0] = entity.id;
         this.connection.update( TABLE_PLAYER_HISTORY, contentValues, "id = ?", parameter);
         return new PlayerHistoryResponse(entity);
+    }
+
+    @Override
+    public PlayerHistoryResponse getPlayerHistory(String playerHistoryID) {
+        Cursor result = null;
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(TABLE_PLAYER_HISTORY);
+        query.append(" WHERE id = ?");
+        String[] parameter = new String[1];
+        parameter[0] = playerHistoryID;
+        result = this.connection.rawQuery(query.toString(), parameter);
+        result.moveToFirst();
+        if (result.getCount() > 0) return new PlayerHistoryResponse(result);
+        return null;
     }
 }

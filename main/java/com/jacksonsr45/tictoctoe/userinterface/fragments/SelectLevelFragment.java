@@ -28,6 +28,11 @@ public class SelectLevelFragment extends Fragment {
     private PlayerHistoryManager playerHistoryManager;
 
     private static final String ARG_PLAYER_ID = "playerID";
+    private static final String ARG_LEVEL = "level";
+    private static final String ARG_PLAYER_HISTORY_ID = "playerHistoryID";
+    private static final String SELECT_LEVEL_EASY = "0";
+    private static final String SELECT_LEVEL_MEDIUM = "1";
+    private static final String SELECT_LEVEL_HARD = "2";
 
     private String playerID, playerHistoryID;
     private ImageButton buttonLevelEasy, buttonLevelMedium, buttonLevelHard, buttonExit;
@@ -83,8 +88,8 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", "1");
-                intent.putExtra("playerHistoryID", playerHistoryID);
+                intent.putExtra(ARG_LEVEL, SELECT_LEVEL_EASY);
+                intent.putExtra(ARG_PLAYER_HISTORY_ID, playerHistoryID);
                 resultLauncher.launch(intent);
             }
         });
@@ -95,8 +100,8 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", "2");
-                intent.putExtra("playerHistoryID", playerHistoryID);
+                intent.putExtra(ARG_LEVEL, SELECT_LEVEL_MEDIUM);
+                intent.putExtra(ARG_PLAYER_HISTORY_ID, playerHistoryID);
                 resultLauncher.launch(intent);
             }
         });
@@ -107,8 +112,8 @@ public class SelectLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getContext(), InGameActivity.class);
-                intent.putExtra("level", "3");
-                intent.putExtra("playerHistoryID", playerHistoryID);
+                intent.putExtra(ARG_LEVEL, SELECT_LEVEL_HARD);
+                intent.putExtra(ARG_PLAYER_HISTORY_ID, playerHistoryID);
                 resultLauncher.launch(intent);
             }
         });

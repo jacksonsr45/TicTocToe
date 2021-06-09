@@ -9,10 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.jacksonsr45.tictoctoe.domain.usecases.playermanager.PlayerManager;
@@ -58,11 +54,8 @@ public class ListPlayersAdapter extends RecyclerView.Adapter<ListPlayersAdapter.
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 v.getContext().startActivity(intent);
-
             }
         });
-
-
     }
 
     @Override

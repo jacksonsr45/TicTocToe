@@ -19,10 +19,10 @@ public class Movements {
             case 2: this.computer = new ComputerC(); break;
             default: this.computer = new ComputerA(); break;
         }
-        this.computer.move(table, checker, (checker/2));
+        this.computer.move(table, checker, -1);
         this.setLine(this.computer.getLine());
         this.setColumn(this.computer.getColumn());
-        this.setValue(-(checker/2));
+        this.setValue(-1);
     }
 
     public Movements(int id, String matchId,Table table, int line, int column, int value) {

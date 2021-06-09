@@ -3,6 +3,7 @@ package com.jacksonsr45.tictoctoe.domain.gateway;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MatchEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.MovementEntity;
 import com.jacksonsr45.tictoctoe.domain.entity.tictoctoe.PlayerHistoryEntity;
+import com.jacksonsr45.tictoctoe.domain.request.playerhistory.PlayerHistoryRequest;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MatchResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.MovementsResponse;
 import com.jacksonsr45.tictoctoe.domain.response.tictoctoe.PlayerHistoryResponse;
@@ -17,4 +18,6 @@ public interface TicTocToeInterface {
     public MovementsResponse playerMove(MovementEntity entity);
 
     public PlayerHistoryResponse setPlayerHistory(PlayerHistoryEntity entity);
+
+    public PlayerHistoryResponse getPlayerHistory(String playerHistoryID);
 }
