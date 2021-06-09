@@ -61,6 +61,8 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.fragment_game_table, container, false);
         this.playerHistoryID = this.presenter.getMatch().playersHistoryId;
         this.repository = new TicTocToeRepository(getContext());
+        this.extras = new Bundle();
+        this.intent = new Intent(getContext(), GameResultActivity.class);
         this.ticTocToe = new TicTocToe(this.repository);
         this.matchID = this.presenter.getMatch().id;
         this.level = String.valueOf(this.presenter.getMatch().level);
@@ -264,8 +266,6 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
     private void check() {
         if (this.presenter.getMovements() != null)
             if (this.ticTocToe.checkResult(this.presenter.getMovements().table)) {
-                this.extras = new Bundle();
-                this.intent = new Intent(getContext(), GameResultActivity.class);
                 this.extras.putParcelable("presenter", this.presenter);
                 this.intent.putExtras(this.extras);
                 startActivity(this.intent);
