@@ -1,5 +1,6 @@
 package com.jacksonsr45.tictoctoe.userinterface.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -11,6 +12,7 @@ import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MatchRequest;
 import com.jacksonsr45.tictoctoe.domain.request.tictoctoe.MovementRequest;
 import com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe.TicTocToe;
 import com.jacksonsr45.tictoctoe.infrastructure.repository.TicTocToeRepository;
+import com.jacksonsr45.tictoctoe.userinterface.activity.GameResultActivity;
 import com.jacksonsr45.tictoctoe.userinterface.activity.R;
 import com.jacksonsr45.tictoctoe.userinterface.presenter.TicTocToePresenter;
 
@@ -21,6 +23,9 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
     private TicTocToeRepository repository;
     private TicTocToePresenter presenter;
 
+    private Intent intent;
+    private Bundle extras;
+
     private static final String ARG_PRESENTER = "presenter";
 
     private String playerHistoryID, level, matchID;
@@ -30,6 +35,7 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
             textTableButton5, textTableButton6, textTableButton7, textTableButton8, textTableButton9;
 
     private int count = 1;
+    private int movement = 1;
 
     public GameTableFragment() { }
 
@@ -62,8 +68,6 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
         this.initButtons(view);
         this.initTextViews(view);
         this.buttonSetOnClickListener();
-
-        view.hasOnClickListeners();
         return view;
     }
 
@@ -137,10 +141,15 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setPlayerMovement(int line, int column, int value) {
-        this.movementRequest = new MovementRequest( this.count, this.matchID,
+        if (this.presenter.getMovements() == null)
+            this.movementRequest = new MovementRequest( this.count, this.matchID,
+                    null,line,column,value);
+        else this.movementRequest = new MovementRequest( this.count, this.matchID,
                 this.presenter.getMovements().table,line,column,value);
         this.ticTocToe.playerMove(this.movementRequest, this.presenter);
         this.count += 1;
+        this.movement = -1;
+        this.check();
     }
 
     private void buttonSetOnClickListener() {
@@ -181,17 +190,89 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
     }
 
     private void computerMove() {
-
+        String value;
+        this.movementRequest = new MovementRequest(this.count, this.matchID,
+                this.presenter.getMovements().table, Integer.parseInt(this.level), 2);
+        this.ticTocToe.computerMove(this.movementRequest, this.presenter);
+        int line = this.presenter.getMovements().line;
+        int column = this.presenter.getMovements().column;
+        value = String.valueOf(line)+String.valueOf(column);
+        this.setTableComputerValue(value);
     }
 
-    private boolean check() {
-
-        return false;
+    private void setTableComputerValue(String value) {
+        this.count += 1;
+        this.movement = 1;
+        switch (value) {
+            case "00": this.defaultSetTableComputer1();break;
+            case "01": this.defaultSetTableComputer2();break;
+            case "02": this.defaultSetTableComputer3();break;
+            case "10": this.defaultSetTableComputer4();break;
+            case "11": this.defaultSetTableComputer5();break;
+            case "12": this.defaultSetTableComputer6();break;
+            case "20": this.defaultSetTableComputer7();break;
+            case "21": this.defaultSetTableComputer8();break;
+            default: this.defaultSetTableComputer9();break;
+        }
     }
 
-    private void run() {
-        do {
+    private void defaultSetTableComputer1() {
+        this.textTableButton1.setText("O");
+        this.tableButton1.setClickable(false);
+    }
 
-        } while (!check());
+    private void defaultSetTableComputer2() {
+        this.textTableButton2.setText("O");
+        this.tableButton2.setClickable(false);
+    }
+
+    private void defaultSetTableComputer3() {
+        this.textTableButton3.setText("O");
+        this.tableButton3.setClickable(false);
+    }
+
+    private void defaultSetTableComputer4() {
+        this.textTableButton4.setText("O");
+        this.tableButton4.setClickable(false);
+    }
+
+    private void defaultSetTableComputer5() {
+        this.textTableButton5.setText("O");
+        this.tableButton5.setClickable(false);
+    }
+
+    private void defaultSetTableComputer6() {
+        this.textTableButton6.setText("O");
+        this.tableButton6.setClickable(false);
+    }
+
+    private void defaultSetTableComputer7() {
+        this.textTableButton7.setText("O");
+        this.tableButton7.setClickable(false);
+    }
+
+    private void defaultSetTableComputer8() {
+        this.textTableButton8.setText("O");
+        this.tableButton8.setClickable(false);
+    }
+
+    private void defaultSetTableComputer9() {
+        this.textTableButton9.setText("O");
+        this.tableButton9.setClickable(false);
+    }
+
+    private void check() {
+        if (this.presenter.getMovements() != null)
+            if (this.ticTocToe.checkResult(this.presenter.getMovements().table)) {
+                this.extras = new Bundle();
+                this.intent = new Intent(getContext(), GameResultActivity.class);
+                this.extras.putParcelable("presenter", this.presenter);
+                this.intent.putExtras(this.extras);
+                startActivity(this.intent);
+            }
+        if (this.movement == -1) {
+            this.computerMove();
+            this.check();
+        }
     }
 }
