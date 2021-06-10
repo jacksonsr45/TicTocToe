@@ -1,22 +1,31 @@
 package com.jacksonsr45.tictoctoe.domain.usecases.tictoctoe;
 
 
+import androidx.annotation.Nullable;
+
 public class PlayerHistory {
     private Table table;
     private String id;
     private String playerId;
     private int total, victories, defeats, ties;
 
+
+    public PlayerHistory(int result, String id, String playerId, int total, int victories, int defeats, int ties) {
+        this.setId(id);
+        this.setPlayerId(playerId);
+        this.setTotal(total + 1);
+        this.getResult( result, victories, defeats, ties);
+    }
+
     public PlayerHistory(Table table, String id, String playerId, int total, int victories, int defeats, int ties) {
         this.table = table;
         this.setId(id);
         this.setPlayerId(playerId);
         this.setTotal(total + 1);
-        this.getResult(victories, defeats, ties);
     }
 
-    private void getResult(int victories, int defeats, int ties) {
-        switch (this.table.getResult()) {
+    private void getResult(int result, int victories, int defeats, int ties) {
+        switch (result) {
             case 1: this.victories = victories + 1; break;
             case -1: this.defeats = defeats + 1;break;
             default: this.ties = ties + 1;

@@ -9,6 +9,16 @@ public class PlayerHistoryRequest {
     private String playerId;
     private int total, victories, defeats, ties;
 
+    public PlayerHistoryRequest(int result, String id, String playerId, int total, int victories, int defeats, int ties) {
+        this.playerHistory = new PlayerHistory(result, id, playerId, total, victories, defeats, ties);
+        this.setId(this.playerHistory.getId());
+        this.setPlayerId(this.playerHistory.getPlayerId());
+        this.setTotal(this.playerHistory.getTotal());
+        this.setVictories(this.playerHistory.getVictories());
+        this.setDefeats(this.playerHistory.getDefeats());
+        this.setTies(this.playerHistory.getTies());
+    }
+
     public PlayerHistoryRequest(Table table, String id, String playerId, int total, int victories, int defeats, int ties) {
         this.playerHistory = new PlayerHistory(table, id, playerId, total, victories, defeats, ties);
         this.setId(this.playerHistory.getId());

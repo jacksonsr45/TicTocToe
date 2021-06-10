@@ -27,6 +27,8 @@ public class GameResultActivity extends AppCompatActivity {
     private ImageView imageEmojiResult, imageStarResult;
     private ImageButton buttonContinueGame, buttonExitToHome;
 
+    private int result;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,11 @@ public class GameResultActivity extends AppCompatActivity {
 
         this.ticTocToe.getPlayerHistory(this.presenter.getMatch().playersHistoryId, this.presenter);
 
+        this.result = this.bundle.getInt("result");
+        System.out.println(this.result);
+
         this.request = new PlayerHistoryRequest(
-                this.presenter.getMovements().table, this.presenter.getPlayerHistory().id,
+                this.result, this.presenter.getPlayerHistory().id,
                 this.presenter.getPlayerHistory().playerId, this.presenter.getPlayerHistory().total,
                 this.presenter.getPlayerHistory().victories, this.presenter.getPlayerHistory().defeats,
                 this.presenter.getPlayerHistory().ties
@@ -59,7 +64,7 @@ public class GameResultActivity extends AppCompatActivity {
     }
 
     private void getResultInScreen() {
-        switch (this.presenter.getMatch().result) {
+        switch (this.result) {
             case 1: this.imageEmojiResult.setImageResource(R.drawable.ic_emoji_victory);
                     this.imageStarResult.setImageResource(R.drawable.ic_star_min_result_victory);
                 break;

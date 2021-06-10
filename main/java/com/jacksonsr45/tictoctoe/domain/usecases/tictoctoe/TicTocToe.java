@@ -43,7 +43,8 @@ public class TicTocToe {
 
     public boolean checkResult(Table table) {
         if (table.checkResult(3, 1)) return true;
-        else if (table.checkResult(-3,1)) return true;
+        else if (table.checkResult(-3,-1)) return true;
+        else if (table.checkATie()) return true;
         return false;
     }
 }
