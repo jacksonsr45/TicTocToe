@@ -38,6 +38,16 @@ public class TicTocToeRepository implements TicTocToeInterface {
     }
 
     @Override
+    public MatchResponse updateMatch(String matchID, int result) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("result", result);
+        String[] parameter = new String[1];
+        parameter[0] = matchID;
+        this.connection.update(TABLE_MATCH, contentValues, "id = ?", parameter);
+        return null;
+    }
+
+    @Override
     public MatchResponse deleteMatch(String matchID) {
         String[] parameter = new String[1];
         parameter[0] = matchID;

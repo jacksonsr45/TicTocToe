@@ -15,8 +15,10 @@ public class PlayerHistoryPresenter implements PlayerHistoryPresenterInterface {
 
     @Override
     public void present(ArrayList response) {
-        if ( response.get(0).getClass() == MatchResponse.class) this.matches = response;
-        else if ( response.get(0).getClass() == MovementsResponse.class) this.movements = response;
+        if (response.size() > 0) {
+            if ( response.get(0).getClass() == MatchResponse.class) this.matches = response;
+            if ( response.get(0).getClass() == MovementsResponse.class) this.movements = response;
+        }
     }
 
     @Override

@@ -75,7 +75,7 @@ public class PlayerHistoryRepository implements PlayerHistoryInterface {
         if (result.getCount() > 0) {
             do {
                 matches.add(new MatchResponse(result));
-            } while (result.moveToFirst());
+            } while (result.moveToNext());
         }
         return matches;
     }

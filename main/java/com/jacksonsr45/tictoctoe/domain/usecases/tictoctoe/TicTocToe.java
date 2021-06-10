@@ -29,6 +29,10 @@ public class TicTocToe {
         presenter.present(this.ticTocToe.deleteMatch(matchID));
     }
 
+    public void updateMatch(String matchID, int result) {
+        this.ticTocToe.updateMatch(matchID, result);
+    }
+
     public void computerMove(MovementRequest request, TicTocToePresenterInterface presenter) {
         presenter.present(this.ticTocToe.computerMove(new MovementEntity(request)));
     }

@@ -66,6 +66,7 @@ public class PlayerHistoryFragment extends Fragment {
         if (this.presenter.getPlayerHistory() == null)
             this.playerHistoryManager.createPlayerHistory(this.request, this.presenter);
 
+        this.playerHistoryManager.listMatch(this.presenter.getPlayerHistory().id, this.presenter);
         if (this.presenter.getMatches() != null) {
             ListPlayerHistoryAdapter adapter = new ListPlayerHistoryAdapter(this.presenter);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

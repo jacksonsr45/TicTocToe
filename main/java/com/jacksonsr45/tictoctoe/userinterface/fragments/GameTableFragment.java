@@ -274,6 +274,7 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
                 this.extras.putParcelable("presenter", this.presenter);
                 this.extras.putInt("result", this.presenter.getMovements().table.getResult());
                 this.intent.putExtras(this.extras);
+                this.ticTocToe.updateMatch(this.matchID, this.presenter.getMovements().table.getResult());
                 resultLauncher.launch(intent);
             }
         if (this.movement == -1) {

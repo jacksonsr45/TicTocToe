@@ -39,11 +39,11 @@ public class ListPlayerHistoryAdapter extends RecyclerView.Adapter<ListPlayerHis
                 holder.imageMinResult.setImageResource(R.drawable.ic_star_min_result_tie);
                 break;
         }
-        switch (this.presenter.getMatches().get(position).result) {
-            case 1:
+        switch (this.presenter.getMatches().get(position).level) {
+            case 0:
                 holder.textViewResultTotalMove.setText(R.string.text_level_easy);
                 break;
-            case 2:
+            case 1:
                 holder.textViewResultTotalMove.setText(R.string.text_view_medium);
                 break;
             default:

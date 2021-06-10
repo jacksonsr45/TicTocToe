@@ -17,7 +17,7 @@ public class Match {
         this.setPlayersHistoryId(playersHistoryId);
         this.setLevel(level);
         this.setResult(0);
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
         this.setCreatedAt(formatter.format(new Date()));
     }
 

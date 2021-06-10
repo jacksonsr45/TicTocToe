@@ -13,6 +13,8 @@ public interface TicTocToeInterface {
 
     public MatchResponse deleteMatch(String matchID);
 
+    public MatchResponse updateMatch(String matchID, int result);
+
     public MovementsResponse computerMove(MovementEntity entity);
 
     public MovementsResponse playerMove(MovementEntity entity);
