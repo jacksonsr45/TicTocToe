@@ -269,15 +269,15 @@ public class GameTableFragment extends Fragment implements View.OnClickListener 
     }
 
     private void check() {
-        if (this.presenter.getMovements() != null)
-            if (this.ticTocToe.checkResult(this.presenter.getMovements().table)) {
-                this.extras.putParcelable("presenter", this.presenter);
-                this.extras.putInt("result", this.presenter.getMovements().table.getResult());
-                this.intent.putExtras(this.extras);
-                this.ticTocToe.updateMatch(this.matchID, this.presenter.getMovements().table.getResult());
-                resultLauncher.launch(intent);
-            }
-        if (this.movement == -1) {
+        if (this.presenter.getMovements().table.checkResult(3, 1) ||
+                this.presenter.getMovements().table.checkResult(-3, -1) ||
+                this.presenter.getMovements().table.checkATie()) {
+            this.extras.putParcelable("presenter", this.presenter);
+            this.extras.putInt("result", this.presenter.getMovements().table.getResult());
+            this.intent.putExtras(this.extras);
+            this.ticTocToe.updateMatch(this.matchID, this.presenter.getMovements().table.getResult());
+            resultLauncher.launch(intent);
+        } else if (this.movement == -1) {
             this.computerMove();
             this.check();
         }

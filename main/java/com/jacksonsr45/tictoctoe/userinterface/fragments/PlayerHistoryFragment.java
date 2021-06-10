@@ -67,13 +67,12 @@ public class PlayerHistoryFragment extends Fragment {
             this.playerHistoryManager.createPlayerHistory(this.request, this.presenter);
 
         this.playerHistoryManager.listMatch(this.presenter.getPlayerHistory().id, this.presenter);
-        if (this.presenter.getMatches() != null) {
-            ListPlayerHistoryAdapter adapter = new ListPlayerHistoryAdapter(this.presenter);
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-            this.listViewResult.setLayoutManager(layoutManager);
-            this.listViewResult.setHasFixedSize(true);
-            this.listViewResult.setAdapter(adapter);
-        }
+
+        ListPlayerHistoryAdapter adapter = new ListPlayerHistoryAdapter(this.presenter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        this.listViewResult.setLayoutManager(layoutManager);
+        this.listViewResult.setHasFixedSize(true);
+        this.listViewResult.setAdapter(adapter);
 
         this.textViewTotalVictories.setText(String.valueOf(this.presenter.getPlayerHistory().victories));
         this.textViewTotalDefeats.setText(String.valueOf(this.presenter.getPlayerHistory().defeats));
